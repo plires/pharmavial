@@ -1,0 +1,6 @@
+{
+    "require": {
+        "almasaeed2010/adminlte": "~3.0",
+        "ipinfo/ipinfo": "^1.1"
+    }
+}

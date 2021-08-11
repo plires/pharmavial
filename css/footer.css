@@ -1,0 +1,29 @@
+/* Footer */
+footer { background: #d9d9d9; padding: 30px 0!important; }
+footer ul { padding: 0; }
+footer p,
+footer li,
+footer a { color: black; font-size: 0.75rem; }
+footer .datos { margin-bottom: 15px; }
+footer .datos .logo { margin-bottom: 15px; }
+footer .pharmacovial_footer { margin-top: 20px; }
+footer .menu li a { font-weight: 700; font-size: 0.85rem; }
+footer .menu li a:hover { color: var(--secondary-color); }
+/* Footer end */
+
+/* Media querys */
+@media (min-width: 576px) {
+	footer .datos { text-align: center; margin-bottom: 60px; }
+}
+
+@media (min-width: 768px) {
+	footer ul { margin: 0; }
+	footer .datos { text-align: left; }
+	footer .datos { margin-bottom: 0; }
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1200px) {
+}

@@ -1,0 +1,12 @@
+{
+    "name": "admin/sitio",
+    "authors": [
+        {
+            "name": "Pablo Lires",
+            "email": "pablolires@gmail.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.1"
+    }
+}

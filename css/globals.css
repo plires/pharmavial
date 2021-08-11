@@ -1,0 +1,49 @@
+/* Globals */
+body { font-family: 'Roboto', sans-serif; color: var(--dark-text); font-size: 16px; line-height: 1.5; position: relative; }
+ul { list-style: none; }
+a { text-decoration: none!important; }
+h2 { color: var(--primary-color); font-weight: 700; font-size: 2rem; margin-bottom: 60px; }
+h3 { color: var(--primary-color); font-weight: 500; font-size: 1.5rem; margin-bottom: 15px; }
+h4 { color: var(--dark-text); font-weight: 400; font-size: 1.25rem; margin-bottom: 10px; }
+.transition{
+  -webkit-transition: all ease-in-out .3s; /* Safari */
+  transition: all ease-in-out .3s;
+}
+
+.custom-file-label::after { content: 'Cargar'; }
+
+#app { position: relative; }
+#spinner { 
+	display: none;
+}
+
+#spinner.show { 
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100vh;
+	z-index: 99999;
+}
+
+#message,
+#message-error { z-index: 999; position: fixed!important; top: 0; width: 100%; display: none; }
+
+/* Globals end */
+
+/* Media queries */
+@media (min-width: 576px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
+	h2 { font-size: 2.75rem; }
+	h3 { font-size: 2.25rem; }
+	h4 { font-size: 2rem; }
+}
+
+@media (min-width: 1200px) {
+}

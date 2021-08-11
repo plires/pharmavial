@@ -1,0 +1,69 @@
+/* Contacto */
+.contacto { margin-bottom: 60px; position: relative; }
+.contacto .mark { 
+	position: absolute;
+	top: 0;
+	left: 15px;
+	width: 10px;
+	height: 80px;
+	background: transparent;
+	background-image: url('../img/contacto/con.png');
+	background-repeat: no-repeat;
+  background-position: 50% 50%;
+	overflow: hidden;
+}
+.contacto .formulario { margin-bottom: 45px; display: flex; }
+.contacto .formulario .content { width: 100%; }
+.contacto .formulario h2 { font-size: 2rem; color: var(--secondary-color); font-weight: 700; text-align: center; }
+.contacto .formulario .form-control,
+.contacto .formulario .custom-select {
+	border: none;
+	border-radius: 0;
+	border-bottom: solid 1px var(--secondary-color);
+	margin-bottom: 45px;
+	resize: none;
+	color: var(--primary-color);
+}
+.contacto .formulario .form-control:focus,
+.contacto .formulario .custom-select:focus {
+	outline: none;
+	padding-left: 20px;
+	outline: 0;
+	box-shadow: none;
+}
+.contacto .formulario .form-control::placeholder,
+.contacto .formulario .custom-select::placeholder { color: var(--secondary-color); font-size: 0.85rem; }
+.contacto .formulario .form-control::-webkit-input-placeholder,
+.contacto .formulario .custom-select::-webkit-input-placeholder { color: var(--secondary-color); }
+.contacto .formulario .form-control:-ms-input-placeholder,
+.contacto .formulario .custom-select:-ms-input-placeholder { color: var(--secondary-color); }
+.contacto .formulario .invalid-feedback { color: red; font-size: 0.85rem; margin-top: -45px; text-align: left; }
+.contacto .formulario .btn-primary {
+	width: 100%;
+	height: 50px;
+	background: white;
+	border: 1px solid var(--secondary-color);
+	color: var(--secondary-color);
+	font-weight: 700;
+	border-radius: 0;
+	font-size: 0.85rem;
+	text-transform: uppercase;
+}
+.contacto .formulario .btn-primary:hover { background: var(--secondary-color); color: white; }
+/* Contacto end */
+
+/* Media querys */
+@media (min-width: 576px) {
+	.contacto .mark { right: -100px; height: 400px; background-position: 50% 50%; }
+	.contacto .formulario h2 { text-align: left; }
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1200px) {
+}
+

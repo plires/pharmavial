@@ -1,0 +1,42 @@
+/* Farmacovigilancia */
+.farmacovigilancia { margin-bottom: 60px; }
+.farmacovigilancia .max-width-lg {
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.farmacovigilancia .content { display: flex; flex-direction: column; }
+.farmacovigilancia .datos,
+.farmacovigilancia .imagen { display: flex;	flex-direction: column;	justify-content: center; }
+.farmacovigilancia .datos {	background: var(--secondary-color);	 order: 0; padding-top: 30px; padding-bottom: 30px; }
+.farmacovigilancia .imagen { align-items: center; background: #c6c6c6; padding-top: 40px; padding-bottom: 40px; order: 1; }
+.farmacovigilancia h4 { font-size: 2rem; color: white; font-weight: 700; margin-bottom: 30px; }
+.farmacovigilancia h5,
+.farmacovigilancia p { font-size: 0.85rem; color: white; }
+.farmacovigilancia h5 { margin-bottom: 15px; }
+.farmacovigilancia p { margin-bottom: 30px; }
+.farmacovigilancia p:last-child { margin-bottom: 0; }
+/* Farmacovigilancia end */
+
+/* Media querys */
+@media (min-width: 576px) {
+	.farmacovigilancia .datos { }
+}
+
+@media (min-width: 768px) {
+	.farmacovigilancia .content { max-width: 100%; flex-direction: row; margin-bottom: 0; padding: 0; border: none; }
+	.farmacovigilancia .datos { order: 1; }
+	.farmacovigilancia .imagen { padding: 30px; order:0; }
+}
+
+@media (min-width: 992px) {
+
+}
+
+@media (min-width: 1200px) {
+	.farmacovigilancia .max-width-lg { max-width: 1110px; margin: auto; }
+	.farmacovigilancia .datos,
+	.farmacovigilancia .imagen { min-height: 555px; }
+}

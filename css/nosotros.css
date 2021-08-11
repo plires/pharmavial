@@ -1,0 +1,56 @@
+/* Institucional */
+.institucional { margin-bottom: 60px; position: relative; }
+.institucional_lg { 
+	background: var(--primary-color);
+	background-image: url('../img/institucional/back-inst.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 70% 65%;
+}
+.institucional h2 { color: white; margin-bottom: 80px; margin-top: 50px; text-align: center; }
+.institucional_lg .col-md-12 p { color: white; font-size: 1rem; }
+.institucional_lg .col-md-12 p:last-child { margin-bottom: 60px; }
+.institucional .mark { 
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	width: 10px;
+	height: 125px;
+	background: transparent;
+	background-image: url('../img/institucional/nosotros.png');
+	background-repeat: no-repeat;
+  background-position: 50% 50%;
+	overflow: hidden;
+}
+.institucional .slide { margin-bottom: 30px; }
+.institucional .planta_produccion { margin-bottom: 60px; }
+.institucional .planta_produccion h2 { color: var(--primary-color); text-align: center; margin-bottom: 20px; margin-top: 0; }
+.institucional .planta_produccion h4 { font-weight: 700; text-align: center; margin-bottom: 20px; }
+.institucional .planta_produccion p { text-align: center; color: var(--dark-text); margin-bottom: 45px; }
+.institucional .capacidad_anual span { margin-bottom: 3px; font-weight: 500; }
+.institucional .capacidad_anual {
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.85rem;
+	border-bottom: solid 2px #c6c6c6;
+	margin-bottom: 15px;
+}
+/* Institucional end */
+
+/* Media querys */
+@media (min-width: 576px) {
+	.institucional .mark { right: -100px; height: 300px; }
+	.institucional_lg { background-position: 65% 65%; }
+	.institucional h2 { text-align: left; margin-bottom: 40px; }
+}
+
+@media (min-width: 768px) {
+	.institucional .mark { height: 350px; }
+}
+
+@media (min-width: 992px) {
+	#institucional .mark { height: 400px; top: 200px; }	
+}
+
+@media (min-width: 1200px) {
+}

@@ -1,0 +1,55 @@
+/* Nuestros Equipos */
+.nuestros_equipos {
+	margin-bottom: 60px;
+}
+.nuestros_equipos .max-width-lg {
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.nuestros_equipos .content { display: flex;	flex-direction: column; margin-bottom: 30px; padding: 0 15px; }
+.nuestros_equipos .datos {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: #ededed;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+.nuestros_equipos .datos h4 { color: var(--dark-color); font-weight: 700; }
+.nuestros_equipos .datos h5 { color: var(--dark-color); font-weight: 700; }
+.nuestros_equipos .datos p { color: var(--dark-color); }
+.nuestros_equipos .imagen { padding: 0; }
+.nuestros_equipos .content:nth-child(3) .imagen,
+.nuestros_equipos .content:nth-child(5) .imagen { order: 1; }
+.nuestros_equipos .content:nth-child(3) .datos,
+.nuestros_equipos .content:nth-child(5) .datos { order: 0; }
+/* Nuestros Equipos end */
+
+/* Media querys */
+@media (min-width: 576px) {
+	.nuestros_equipos .content { max-width: 510px; margin: auto; margin-bottom: 60px; border: 2px solid #dadada; padding: 0; }
+}
+
+@media (min-width: 768px) {
+	.nuestros_equipos .content { max-width: 100%; flex-direction: row; margin-bottom: 0; border: none; }
+	.nuestros_equipos .datos { padding: 15px; }
+	.nuestros_equipos .datos p { font-size: 0.85rem; }
+	.nuestros_equipos .content:nth-child(3) .imagen,
+	.nuestros_equipos .content:nth-child(5) .imagen { order: 0; }
+	.nuestros_equipos .content:nth-child(3) .datos,
+	.nuestros_equipos .content:nth-child(5) .datos { order: 1; }
+}
+
+@media (min-width: 992px) {
+	.nuestros_equipos .datos p { font-size: 1rem; margin: 35px 0 0 0; }
+	.nuestros_equipos .content { padding: 0; }
+}
+
+@media (min-width: 1200px) {
+	.nuestros_equipos .max-width-lg { max-width: 1140px; margin: auto; }
+	.nuestros_equipos .content { padding: 0 15px; }
+}

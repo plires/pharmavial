@@ -1,0 +1,63 @@
+#loader {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 999;
+	display: none;
+}
+
+.backend_login .col-md-6 { display: flex; justify-content: center; align-items: center; }
+
+.backend_suite #suite_id { background-color: #43c1ff; color: white }
+
+.logs h1 { color: grey; font-size: 2rem; margin-top: 60px; font-weight: 300; }
+.logs .table-dark { font-size: 0.75rem; font-weight: 100; }
+.logs .table-dark td { text-align: left; }
+.logs .table-dark td a { color: #a6dd0d; }
+.logs .table-dark td a:hover { color: #ffffff; }
+.logs table tr th {
+	color: #a6dd0d;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.sorting {
+  background-color: #000000;
+}
+
+.asc:after {
+  content: ' ↑';
+}
+
+.desc:after {
+  content: " ↓";
+}
+
+
+/* MEDIA QUERIES */
+
+/* Dispositivos extra pequeños (teléfonos de retrato, menos de 576px) */
+@media (max-width: 575.98px) {
+
+}
+
+/* Dispositivos pequeños (teléfonos apaisados, 576px y más) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+}
+
+/* Dispositivos medianos (tabletas, 768px y más) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+}
+
+/* Dispositivos grandes (escritorios, 992px y más) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+}
