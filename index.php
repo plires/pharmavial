@@ -217,30 +217,27 @@
 
           <div class="row">
 
-            <div data-wow-delay="0.3s" class="col-md-12 wow fadeIn text-center">
-              <div>
-                <form class="form-inline">
-                  <div class="form-group mb-2">
-                    <label for="staticEmail2" class="sr-only">Filtrar por</label>
-                    <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Filtrar por: ">
+            <div data-wow-delay="0.3s" class="col-md-12 wow fadeIn">
+              <p class="filtrar">Filtrar por:</p>
+              <div class="content_filters">
+
+                  <select class="custom-select my-1 mr-sm-2" id="selectAccionesTerapeuticas">
+                    <option class="first_option" value="" selected>Acciones Terapéuticas</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+
+                  <select class="custom-select my-1 mr-sm-2" id="selectPrincipioActivo">
+                    <option class="first_option" value="" selected>Principio Activo</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+
+                  <div class="content_button">
+                    <button class="btn btn-primary transition">Limpiar filtros</button>
                   </div>
-
-                  <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                    <option selected>Acciones Terapéuticas</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-
-                  <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                    <option selected>Principio Activo</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-
-                  <button type="submit" class="btn btn-primary mb-2">Limpiar filtros</button>
-                </form>
               </div>
             </div>
           

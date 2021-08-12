@@ -22,8 +22,13 @@
 	border-bottom: solid 1px var(--secondary-color);
 	margin-bottom: 45px;
 	resize: none;
-	color: var(--primary-color);
+
 }
+.contacto .formulario .custom-select {
+	color: var(--secondary-color)!important;
+	font-size: 0.85rem!important;
+}
+
 .contacto .formulario .form-control:focus,
 .contacto .formulario .custom-select:focus {
 	outline: none;
