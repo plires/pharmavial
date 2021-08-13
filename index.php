@@ -127,9 +127,17 @@
             <li data-target="#carouselCaptions" data-slide-to="2"></li>
             <li data-target="#carouselCaptions" data-slide-to="3"></li>
             <li data-target="#carouselCaptions" data-slide-to="4"></li>
+            <li data-target="#carouselCaptions" data-slide-to="5"></li>
           </ol>
           <div class="carousel-inner">
-            <div class="carousel-item slide-1 active">
+            <div class="carousel-item slide-6 active">
+              <img src="img/header/transparent.png" class="d-block" alt="slide">
+              <div class="carousel-caption">
+                <h5>Formas inyectables </h5>
+                <p>bajo contrato hacia el mundo</p>
+              </div>
+            </div>
+            <div class="carousel-item slide-1">
               <img src="img/header/transparent.png" class="d-block" alt="slide">
               <div class="carousel-caption">
                 <h5>Formas inyectables </h5>
@@ -221,31 +229,51 @@
               <p class="filtrar">Filtrar por:</p>
               <div class="content_filters">
 
-                  <select class="custom-select my-1 mr-sm-2" id="selectAccionesTerapeuticas">
+                  <select 
+                    v-on:change="filterData()" 
+                    v-model="therapeuticAction" 
+                    class="custom-select my-1 mr-sm-2" 
+                    id="therapeuticAction"
+                    name="therapeuticAction">
+
                     <option class="first_option" value="" selected>Acciones Terapéuticas</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option 
+                      v-for="(therapeuticAction, index) in arrayTherapeuticAction" 
+                      :key="index" 
+                      :value="therapeuticAction">
+                      {{ therapeuticAction }}
+                    </option>
+                    
                   </select>
 
-                  <select class="custom-select my-1 mr-sm-2" id="selectPrincipioActivo">
+                  <select 
+                    v-on:change="filterData()" 
+                    v-model="activePrinciple" 
+                    class="custom-select my-1 mr-sm-2" 
+                    id="activePrinciple"
+                    name="activePrinciple">
+
                     <option class="first_option" value="" selected>Principio Activo</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option 
+                      v-for="(activePrinciple, index) in arrayActivePrinciple" 
+                      :key="index" 
+                      :value="activePrinciple">
+                      {{ activePrinciple }}
+                    </option>
+
                   </select>
 
                   <div class="content_button">
-                    <button class="btn btn-primary transition">Limpiar filtros</button>
+                    <button @click="cleanFilters" class="btn btn-primary transition">Limpiar filtros</button>
                   </div>
               </div>
             </div>
           
           </div>
 
-          <div v-if="products.length != 0" class="row">
+          <div v-if="filteredProducts.length != 0" class="row">
 
-            <div v-for="(product, index) in products" :key="product.id" class="col-sm-6 col-md-4">
+            <div v-for="(product, index) in filteredProducts" :key="product.id" class="col-sm-6 col-md-4">
               <div class="content_producto">
 
                 <div :id="'carousel_' + product.id" class="carousel slide" data-ride="carousel">
