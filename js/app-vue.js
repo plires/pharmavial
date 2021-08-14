@@ -32,7 +32,7 @@ let app = new Vue({
       this.arrayActivePrinciple = activePrinciple.sort()
       this.arrayTherapeuticAction = therapeuticAction.sort()
 
-      this.products = response.data
+      this.products = response.data.filter( (product) => product.language == lang )
       this.filteredProducts = this.products
       this.loading()
     },
@@ -44,8 +44,25 @@ let app = new Vue({
       this.loading()
     },
 
+    getProductImage (url) {
+
+      if (url) {
+        console.log(url)
+      } else {
+        console.log('vacio')
+      }
+    },
+
     filteredImages(product_id) {
-      return this.images.filter( (image) => image.product_id == product_id )
+
+      let arrayImages = this.images.filter( (image) => image.product_id == product_id )
+
+      if (arrayImages.length == 1) {
+        return arrayImages[0]
+      } else {
+        return arrayImages
+      }
+
     },
 
     filterData: function() {
@@ -53,7 +70,7 @@ let app = new Vue({
       this.filteredProducts = this.products
 
       let result = this.filteredProducts.filter(
-        product => product.therapeutic_line == this.therapeuticAction || product.active_principle == this.activePrinciple 
+        product => product.therapeutic_line == this.therapeuticAction && product.active_principle == this.activePrinciple 
       )
       this.filteredProducts = result
 

@@ -3,6 +3,8 @@
 .phpintel
 /vendor
 vendor
+/prospectos
+prospectos
 /backend/vendor/
 backend/vendor/
 backend/node_modules/
@@ -13,6 +15,7 @@ uploads
 npm-debug.log
 yarn-error.log
 .swp
+.gitignore
 
 #text editors
 *.esproj

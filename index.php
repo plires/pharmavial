@@ -17,6 +17,12 @@
   $originFile = 'CV Enviado desde el formulario Web-ES';
   $_SESSION['lang'] = 'es';
 
+  echo "
+  <script>
+    var lang = 'es';
+  </script>
+  ";
+
 ?>
 
 <!doctype html>
@@ -276,11 +282,15 @@
             <div v-for="(product, index) in filteredProducts" :key="product.id" class="col-sm-6 col-md-4">
               <div class="content_producto">
 
-                <div :id="'carousel_' + product.id" class="carousel slide" data-ride="carousel">
+                <div v-if="filteredImages(product.id).length == 0">
+                  <img src="img/productos/no-image.gif" class="img-fluid" alt="sin imagen producto">
+                </div>
 
-                  <div class="carousel-inner">
+                <div v-else-if="filteredImages(product.id).length > 1" :id="'carousel_' + product.id" class="carousel slide" data-ride="carousel">
 
-                    <div 
+                  <div class="carousel-inner" class="carousel-item active">
+
+                    <div
                       v-for="(image, index_image) in filteredImages(product.id)" 
                       :key="image.id"
                       v-bind:class="[index_image == 0 ? 'active' : '', 'carousel-item']">
@@ -299,13 +309,17 @@
                   </a>
                 </div>
 
+                <div v-else>
+                  <img :src="'img/productos/' + filteredImages(product.id).url" class="img-fluid" alt="sin imagen producto">
+                </div>
+
                 <div class="datos_producto">
                   <h3>{{ product.name }}</h3>
                   <p class="principio_activo"><span>Principio activo: </span> {{ product.active_principle }}</p>
                   <p class="presentacion"><span>Presentación: </span> {{ product.presentation }}</p>
                   <p class="unidades_caja"><span>Unidad por caja: </span> {{ product.units_per_box }}</p>
                   <p class="linea_terapeutica"><span>Línea terapeutica: </span> {{ product.therapeutic_line }}</p>
-                  <a class="transition" :href="product.link">Descargar prospecto</a>
+                  <a class="transition" :href="product.link" target="_blank" rel="noopener noreferrer">Descargar prospecto</a>
                 </div>  
                 
               </div>
