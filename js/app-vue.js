@@ -3,10 +3,10 @@ let app = new Vue({
   data: function() {
     return {
       products: [],
+      selectActivePrinciple: '',
+      selectTherapeuticAction: '',
       filteredProducts: [],
       images: [],
-      arrayActivePrinciple: [],
-      arrayTherapeuticAction: [],
       therapeuticAction: '',
       activePrinciple: '',
     }
@@ -22,15 +22,21 @@ let app = new Vue({
       $('#spinner').toggleClass('show');
     },
 
+    fillSelects(products) {
+
+      let activePrinciple = [...new Set(products.map( product => product.active_principle) ) ]
+      let therapeuticAction = [...new Set(products.map( product => product.therapeutic_line) ) ]
+
+      this.selectActivePrinciple = activePrinciple.sort()
+      this.selectTherapeuticAction = therapeuticAction.sort()
+
+    },
+
     async getProducts() {
       this.loading()
       let response = await axios.get('/php/getProducts.php')
 
-      let activePrinciple = [...new Set(response.data.map( product => product.active_principle) ) ]
-      let therapeuticAction = [...new Set(response.data.map( product => product.therapeutic_line) ) ]
-
-      this.arrayActivePrinciple = activePrinciple.sort()
-      this.arrayTherapeuticAction = therapeuticAction.sort()
+      this.fillSelects(response.data)
 
       this.products = response.data.filter( (product) => product.language == lang )
       this.filteredProducts = this.products
@@ -42,15 +48,6 @@ let app = new Vue({
       let response = await axios.get('/php/getImages.php')
       this.images = response.data
       this.loading()
-    },
-
-    getProductImage (url) {
-
-      if (url) {
-        console.log(url)
-      } else {
-        console.log('vacio')
-      }
     },
 
     filteredImages(product_id) {
@@ -65,23 +62,41 @@ let app = new Vue({
 
     },
 
-    filterData: function() {
+    filterSelect: function() {
 
-      this.filteredProducts = this.products
+      searchActivePrinciple = this.activePrinciple
+      searchTherapeuticAction = this.therapeuticAction
 
-      let result = this.filteredProducts.filter(
-        product => product.therapeutic_line == this.therapeuticAction && product.active_principle == this.activePrinciple 
-      )
-      this.filteredProducts = result
+      var result = this.products
 
-      if (this.therapeuticAction == '' && this.activePrinciple == '') {
-        this.filteredProducts = this.products
+      if (searchActivePrinciple != '') {
+        result = result.filter(product => product.active_principle.toLowerCase().includes(searchActivePrinciple.toLowerCase())); // aca no filtra
+      } 
+
+      if (searchTherapeuticAction != '') {
+        result = result.filter(product => product.therapeutic_line.toLowerCase().includes(searchTherapeuticAction.toLowerCase())); // aca no filtra
       }
+
+      this.refreshSelects(result)
+      this.filteredProducts = result
+    },
+
+    refreshSelects(arrayPrincipal) {
+      // Llenar select Principio Activo
+      let array = groupBy(arrayPrincipal, 'active_principle')
+      let property = Object.keys(array)
+      this.selectActivePrinciple = property
+
+      // Llenar select job_function
+      array = groupBy(arrayPrincipal, 'therapeutic_line')
+      property = Object.keys(array)
+      this.selectTherapeuticAction = property
 
     },
 
     cleanFilters: function() {
       this.filteredProducts = this.products
+      this.fillSelects(this.products)
       this.activePrinciple = ''
       this.therapeuticAction = ''
     }
@@ -93,3 +108,14 @@ let app = new Vue({
 
   }
 });
+
+function groupBy(objectArray, property) {
+  return objectArray.reduce((acc, obj) => {
+    const key = obj[property];
+    if (!acc[key]) {
+       acc[key] = [];
+    }
+    // Add object to list for given key's value
+    return acc;
+  }, {});
+}

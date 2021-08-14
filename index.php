@@ -236,15 +236,15 @@
               <div class="content_filters">
 
                   <select 
-                    v-on:change="filterData()" 
+                    v-on:change="filterSelect()" 
                     v-model="therapeuticAction" 
                     class="custom-select my-1 mr-sm-2" 
                     id="therapeuticAction"
                     name="therapeuticAction">
 
-                    <option class="first_option" value="" selected>Acciones Terapéuticas</option>
+                    <option class="first_option" value="" selected>Acciones Terapéuticas (Todos)</option>
                     <option 
-                      v-for="(therapeuticAction, index) in arrayTherapeuticAction" 
+                      v-for="(therapeuticAction, index) in selectTherapeuticAction" 
                       :key="index" 
                       :value="therapeuticAction">
                       {{ therapeuticAction }}
@@ -253,20 +253,20 @@
                   </select>
 
                   <select 
-                    v-on:change="filterData()" 
+                    v-on:change="filterSelect()" 
                     v-model="activePrinciple" 
                     class="custom-select my-1 mr-sm-2" 
                     id="activePrinciple"
                     name="activePrinciple">
 
-                    <option class="first_option" value="" selected>Principio Activo</option>
+                    <option class="first_option" value="" selected>Principio Activo (Todos)</option>
                     <option 
-                      v-for="(activePrinciple, index) in arrayActivePrinciple" 
+                      v-for="(activePrinciple, index) in selectActivePrinciple" 
                       :key="index" 
                       :value="activePrinciple">
                       {{ activePrinciple }}
                     </option>
-
+                    
                   </select>
 
                   <div class="content_button">
