@@ -94,10 +94,9 @@ $productos = $db->getRepositorioProducts()->getProducts();
 
                 <div class="card card-primary">
                   <div class="card-header">
-                    <h3 class="card-title">Seleccione el producto a ditar y luego grabe los nuevos nuevos valores</h3>
+                    <h3 class="card-title">Seleccione el producto a editar y luego grabe los nuevos nuevos valores</h3>
                   </div>
                   
-
                   <!-- form start -->
                   <form id="form_product" method="post" class="needs-validation" novalidate>
 
@@ -105,17 +104,34 @@ $productos = $db->getRepositorioProducts()->getProducts();
                     
                     <div class="card-body">
 
-                      <div class="form-group mb-5">
+                      <div class="form-group">
                         <label>Seleccionar Producto</label>
-                        <select id="product_id" name="name" class="custom-select">
+                        <select required v-model="selected" id="product_id" name="name" class="custom-select">
 
-                          <option 
-                            v-for="(product, index) in products" 
-                            :key="index" :value="product.id"> {{ product.name }} </option>
-                          
                           <option value="0" selected>Seleccione producto para cambiar los valores</option>
+                          
+                          <option 
+                            v-for="(product, index) in productsByLang" 
+                            :key="index" :value="product.id"> {{ product.name }} - {{ product.language }}
+                          </option>
 
                         </select>
+
+                        <div class="invalid-feedback">
+                          Seleccione un producto
+                        </div>
+
+                      </div>
+
+                      <div class="form-group mb-5">
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                          <label class="btn btn-primary active">
+                            <input @click="changeLanguage('es')" type="radio" name="options" id="option1" checked> Español
+                          </label>
+                          <label class="btn btn-primary">
+                            <input @click="changeLanguage('en')" type="radio" name="options" id="option2"> Ingles
+                          </label>
+                        </div>
                       </div>
 
                       <div class="form-row">
@@ -139,12 +155,18 @@ $productos = $db->getRepositorioProducts()->getProducts();
                       <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="presentation">Presentación</label>
-                          <input type="text" class="form-control" id="presentation" name="presentation" placeholder="Presentación">
+                          <input required type="text" class="form-control" id="presentation" name="presentation" placeholder="Presentación">
+                          <div class="invalid-feedback">
+                            Ingrese la presentación
+                          </div>
                         </div>
 
                         <div class="form-group col-md-6">
                           <label for="units_per_box">Unidades por Caja</label>
                           <input required type="text" class="form-control" id="units_per_box" name="units_per_box" placeholder="Unidades por Caja">
+                          <div class="invalid-feedback">
+                            Ingrese las unidades por caja
+                          </div>
                         </div>
                       </div>
 
@@ -152,11 +174,17 @@ $productos = $db->getRepositorioProducts()->getProducts();
                         <div class="form-group col-md-6">
                           <label for="pharmaceutical_form">Forma Farmacéutica</label>
                           <input required type="text" class="form-control" id="pharmaceutical_form" name="pharmaceutical_form" placeholder="Forma Farmacéutica">
+                          <div class="invalid-feedback">
+                            Ingrese la forma farmacéutica
+                          </div>
                         </div>
 
                         <div class="form-group col-md-6">
                           <label for="therapeutic_line">Línea Terapéutica</label>
                           <input required type="text" class="form-control" id="therapeutic_line" name="therapeutic_line" placeholder="Línea Terapéutica">
+                          <div class="invalid-feedback">
+                            Ingrese la línea terapéutica
+                          </div>
                         </div>
                       </div>
 
@@ -164,11 +192,17 @@ $productos = $db->getRepositorioProducts()->getProducts();
                         <div class="form-group col-md-6">
                           <label for="link">Link</label>
                           <input required type="text" class="form-control" id="link" name="link" placeholder="Link">
+                          <div class="invalid-feedback">
+                            Ingrese el prospecto
+                          </div>
                         </div>
 
                         <div class="form-group col-md-6">
                           <label for="language">Idioma (es = Español | en = Ingles)</label>
                           <input required type="text" class="form-control" id="language" name="language" placeholder="Idioma">
+                          <div class="invalid-feedback">
+                            Ingrese el idioma para visualizar en el sitio
+                          </div>
                         </div>
                       </div>
 

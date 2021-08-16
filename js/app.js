@@ -41,14 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // function headerScroll() {
-  //   if ($(document).scrollTop() > slide[0].offsetHeight) {
-  //     $("nav").addClass("header_scroll");
-  //   } else {
-  //     $("nav").removeClass("header_scroll");
-  //   }
-  // }
-
   function removeAllActiveClassFromNav(){
     for (let i = 0; i < navItem.length; i++) {
       navItem[i].classList.remove("active");

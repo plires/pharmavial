@@ -67,7 +67,7 @@ $(form_product).on('submit', function(e) { //use on if jQuery 1.7+
 
     setTimeout(function() {
       $(form_product).removeClass("was-validated");
-    }, 0)
+    }, 10)
     
     return false
   }
@@ -75,19 +75,23 @@ $(form_product).on('submit', function(e) { //use on if jQuery 1.7+
   loader()
 
   var data = $("#form_product :input").serializeArray();
-  
+
   $.ajax({
     url: 'php/save_product.php',
     data: data,
     type: "POST",
     success: function(result){
 
-        if (result) {
-          createToasts('bg-success', 'Producto', 'Edición', 'El Producto se editó existosamente.')
-          app.getProducts()
-        } else {
-          createToasts('bg-danger', 'Producto', 'Edición', 'Hubo un error al grabar los datos. Intente nuevamente.')
-        }
+      if (result) {
+        createToasts('bg-success', 'Producto', 'Edición', 'El Producto se editó existosamente.')
+        let lang = app.productsByLang[0].language
+        app.getProducts()
+        setTimeout(function(){
+          app.changeLanguage(lang)
+        }, 500);
+      } else {
+        createToasts('bg-danger', 'Producto', 'Edición', 'Hubo un error al grabar los datos. Intente nuevamente.')
+      }
 
   }});
 
