@@ -66,6 +66,38 @@ class RepositorioProductsSQL extends repositorioProducts
 
   }
 
+  public function saveProduct($post)
+  {
+
+    $id = $post['id_product'];
+
+    $sql = "
+      UPDATE products SET 
+        name = :name, 
+        active_principle = :active_principle, 
+        presentation = :presentation,
+        units_per_box = :units_per_box,
+        pharmaceutical_form = :pharmaceutical_form,
+        therapeutic_line = :therapeutic_line,
+        link = :link,
+        language = :language
+      WHERE id = '$id' ";
+
+    $stmt = $this->conexion->prepare($sql);
+
+    $stmt->bindValue(":name", $post['name'], PDO::PARAM_STR);
+    $stmt->bindValue(":active_principle", $post['active_principle'], PDO::PARAM_STR);
+    $stmt->bindValue(":presentation", $post['presentation'], PDO::PARAM_STR);
+    $stmt->bindValue(":units_per_box", $post['units_per_box'], PDO::PARAM_STR);
+    $stmt->bindValue(":pharmaceutical_form", $post['pharmaceutical_form'], PDO::PARAM_STR);
+    $stmt->bindValue(":therapeutic_line", $post['therapeutic_line'], PDO::PARAM_STR);
+    $stmt->bindValue(":link", $post['link'], PDO::PARAM_STR);
+    $stmt->bindValue(":language", $post['language'], PDO::PARAM_STR);
+
+    return $stmt->execute();
+
+  }
+
 }
 
 ?>

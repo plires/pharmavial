@@ -721,7 +721,6 @@
   <script src="node_modules/wowjs/dist/wow.min.js"></script>
   <script src="node_modules/vue/dist/vue.js"></script>
   <script src="node_modules/axios/dist/axios.min.js"></script>
-  <!-- <script src="node_modules/jquery.easing/jquery.easing.min.js"></script> -->
   <script src="js/app-vue.js"></script>
   <script src="js/app.js"></script>
 </html>

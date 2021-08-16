@@ -1,9 +1,8 @@
 <?php
-
-	include('../../config.inc.php');
-	include_once('../../soporte.php');
-	include_once('../../clases/app.php');
-
+	
+	include_once __DIR__ . '/../../includes/soporte.php';
+	include_once __DIR__ . '/../../clases/app.php';
+	
 	if ( $_POST['pass'] == '' || $_POST['c_pass'] == '' ) {
 		echo false; exit;
 	}

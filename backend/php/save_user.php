@@ -1,11 +1,8 @@
 <?php
-
-	include('../../config.inc.php');
-	include_once('../../soporte.php');
-
-	include_once('../../includes/funciones_validar.php');
-
-	include_once('../../clases/app.php');
+	
+	include_once __DIR__ . '/../../includes/soporte.php';
+	include_once __DIR__ . '/../../includes/funciones_validar.php';
+	include_once __DIR__ . '/../../clases/app.php';
 
 	if (!comprobar_email($_POST['email'])){
     echo false; exit;

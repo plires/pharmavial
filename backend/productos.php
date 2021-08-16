@@ -7,16 +7,14 @@ session_destroy();
 header('Location: ./');
 }
 
-include('../includes/config.inc.php');
-include_once('../includes/soporte.php');
+require __DIR__ . '/../includes/soporte.php';
+require __DIR__ . '/../clases/app.php';
+require __DIR__ . '/../includes/funciones_validar.php';
 
-include_once('../clases/app.php');
-include ('../includes/funciones_validar.php');
+$section = 'products';
+$current = 'products';
 
-$section = 'suites';
-$current = 'suites';
-
-$suites = $db->getRepositorioSuites()->getSuitesWithMainImage($section);
+$productos = $db->getRepositorioProducts()->getProducts();
 
 ?>
 
@@ -27,13 +25,13 @@ $suites = $db->getRepositorioSuites()->getSuitesWithMainImage($section);
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Administracion de precios. Hotel alojamiento Jonde. Suites de calidad y con precios inmejorables. Conocenos!">
+    <meta name="description" content="Administracion de productos. Laboratorio Ibc | Pharmavial">
     <meta name="author" content="Librecomunicacion">
 
     <!-- Favicons -->
     <?php include('includes/favicon.php'); ?>
 
-    <title>Hotel Alojamiento Jonde. Backend</title>
+    <title>Pharmavial | Laboratorio IBC | Productos</title>
 
     <!-- Normalize CSS -->
     <link rel="stylesheet" href="../node_modules/normalize.css/normalize.css">
@@ -62,7 +60,7 @@ $suites = $db->getRepositorioSuites()->getSuitesWithMainImage($section);
   </head>
 
   <body class="hold-transition sidebar-mini">
-    <div class="backend_suite wrapper">
+    <div id="app" class="backend_suite wrapper">
 
       <!-- Loader -->
       <?php require('includes/loader.php'); ?>
@@ -80,7 +78,7 @@ $suites = $db->getRepositorioSuites()->getSuitesWithMainImage($section);
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-12 text-center">
-                <h1 class="m-0">Precios y Descuentos Suites</h1>
+                <h1 class="m-0">Datos del Producto.</h1>
               </div>
             </div>
           </div>
@@ -92,50 +90,86 @@ $suites = $db->getRepositorioSuites()->getSuitesWithMainImage($section);
           <div class="container-fluid">
 
             <div class="row">
-              <div class="col-md-6 offset-md-3">
+              <div class="col-md-10 m-auto">
 
                 <div class="card card-primary">
                   <div class="card-header">
-                    <h3 class="card-title">Seleccione la suite a editar y luego grabe los nuevos valores</h3>
+                    <h3 class="card-title">Seleccione el producto a ditar y luego grabe los nuevos nuevos valores</h3>
                   </div>
                   
 
                   <!-- form start -->
-                  <form id="form_suite" method="post" class="needs-validation" novalidate>
+                  <form id="form_product" method="post" class="needs-validation" novalidate>
 
-                    <input type="hidden" id="id_suite" name="id_suite">
+                    <input type="hidden" id="id_product" name="id_product">
                     
                     <div class="card-body">
 
                       <div class="form-group mb-5">
-                        <label>Seleccionar Suite</label>
-                        <select id="suite_id" class="custom-select">
+                        <label>Seleccionar Producto</label>
+                        <select id="product_id" name="name" class="custom-select">
 
-                          <?php foreach ($suites as $key => $suite): ?>
-                            <option value=" <?= $suite['id'] ?> "> <?= $suite['name'] ?> </option>
-                          <?php endforeach ?>
-
-                          <option value="0" selected>Seleccione suite para cambiar los valores</option>
+                          <option 
+                            v-for="(product, index) in products" 
+                            :key="index" :value="product.id"> {{ product.name }} </option>
+                          
+                          <option value="0" selected>Seleccione producto para cambiar los valores</option>
 
                         </select>
                       </div>
 
-                      <div class="form-group">
-                        <label for="price_regular">Precio Estandar</label>
-                        <input required type="text" class="form-control" id="price_regular" name="price_regular" placeholder="Precio estandar">
-                        <div class="invalid-feedback">
-                          Ingrese un número válido
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="name">Nombre del Producto</label>
+                          <input required type="text" class="form-control" id="name" name="name" placeholder="Nombre del Producto">
+                          <div class="invalid-feedback">
+                            Ingrese el nombre del producto
+                          </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                          <label for="active_principle">Principio Activo</label>
+                          <input required type="text" class="form-control" id="active_principle" name="active_principle" placeholder="Principio Activo">
+                          <div class="invalid-feedback">
+                            Ingrese el principio activo
+                          </div>
                         </div>
                       </div>
 
-                      <div class="form-group">
-                        <label for="price_3_hs">Precio Turno 3 Hs (sólo si aplica)</label>
-                        <input type="text" class="form-control" id="price_3_hs" name="price_3_hs" placeholder="Precio turno 3 Hs (si lo hay)">
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="presentation">Presentación</label>
+                          <input type="text" class="form-control" id="presentation" name="presentation" placeholder="Presentación">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                          <label for="units_per_box">Unidades por Caja</label>
+                          <input required type="text" class="form-control" id="units_per_box" name="units_per_box" placeholder="Unidades por Caja">
+                        </div>
                       </div>
 
-                      <div class="form-group">
-                        <label for="discount">Porcentaje de Descuento por pago contado (en blanco si no lo hay)</label>
-                        <input required type="text" class="form-control" id="discount" name="discount" placeholder="Porcentaje de Descuento por pago contado (en blanco si no lo hay)">
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="pharmaceutical_form">Forma Farmacéutica</label>
+                          <input required type="text" class="form-control" id="pharmaceutical_form" name="pharmaceutical_form" placeholder="Forma Farmacéutica">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                          <label for="therapeutic_line">Línea Terapéutica</label>
+                          <input required type="text" class="form-control" id="therapeutic_line" name="therapeutic_line" placeholder="Línea Terapéutica">
+                        </div>
+                      </div>
+
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="link">Link</label>
+                          <input required type="text" class="form-control" id="link" name="link" placeholder="Link">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                          <label for="language">Idioma (es = Español | en = Ingles)</label>
+                          <input required type="text" class="form-control" id="language" name="language" placeholder="Idioma">
+                        </div>
                       </div>
 
                     </div>
@@ -175,14 +209,23 @@ $suites = $db->getRepositorioSuites()->getSuitesWithMainImage($section);
     <!-- AdminLTE -->
     <script src="vendor/almasaeed2010/adminlte/dist/js/adminlte.js"></script>
 
+    <!-- Vue -->
+    <script src="../node_modules/vue/dist/vue.js"></script>
+
+    <!-- Axios -->
+    <script src="../node_modules/axios/dist/axios.min.js"></script>
+
     <!-- Formularios.js -->
     <script src="../js/formularios.js"></script>
 
     <!-- Backend -->
     <script src="js/backend.js"></script>
 
-    <!-- Suites -->
-    <script src="js/suites.js"></script>
+    <!-- VUE Backend -->
+    <script src="js/vue-backend.js"></script>
+
+    <!-- Productos -->
+    <script src="js/products.js"></script>
 
   </body>
 </html>

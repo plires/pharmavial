@@ -1,8 +1,7 @@
 <?php
 
-include('../config.inc.php');
-include_once('../soporte.php');
-include ('../includes/funciones_validar.php');
+require __DIR__ . '/../includes/soporte.php';
+require __DIR__ . '/../includes/funciones_validar.php';
 
 $email = '';
 $errors = [];
@@ -52,13 +51,13 @@ if (isset($_POST['send_pass'])) {
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Login. Hotel alojamiento Jonde. Suites de calidad y con precios inmejorables. Conocenos!">
+    <meta name="description" content="Reseteo de contraseña. Laboratorio Ibc | Pharmavial">
     <meta name="author" content="Librecomunicacion">
 
     <!-- Favicons -->
     <?php include('includes/favicon.php'); ?>
 
-    <title>Hotel Alojamiento Jonde. Backend</title>
+    <title>Pharmavial - Laboratorio IBC | Reseteo de Contraseña</title>
 
     <!-- Normalize CSS -->
     <link rel="stylesheet" href="../css/normalize.min.css">

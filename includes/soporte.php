@@ -1,5 +1,6 @@
 <?php
-  require_once("../clases/repositorioSQL.php");
+	
+	include_once __DIR__ . '/../clases/repositorioSQL.php';
 
   /* Include Sistema */
   include_once('sistema.php');

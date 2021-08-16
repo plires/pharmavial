@@ -7,11 +7,10 @@ session_destroy();
 header('Location: ./');
 }
 
-include('../config.inc.php');
-include_once('../soporte.php');
+require __DIR__ . '/../includes/soporte.php';
+require __DIR__ . '/../includes/funciones_validar.php';
+require __DIR__ . '/../clases/app.php';
 
-include_once('../clases/app.php');
-include ('../includes/funciones_validar.php');
 
 $section = 'users';
 $current = 'user';
@@ -20,25 +19,23 @@ $current = 'user';
 <!doctype html>
 <html lang="es">
   <head>
-    <!-- Tag Manager Head -->
-    <?php include_once("../includes/tag_manager_head.php"); ?>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Administracion de usuarios. Hotel alojamiento Jonde. Suites de calidad y con precios inmejorables. Conocenos!">
+    <meta name="description" content="Administracion de usuarios. Laboratorio Ibc | Pharmavial">
     <meta name="author" content="Librecomunicacion">
 
     <!-- Favicons -->
     <?php include('includes/favicon.php'); ?>
 
-    <title>Hotel Alojamiento Jonde. Backend</title>
+    <title>Pharmavial - Laboratorio IBC | Usuarios</title>
 
     <!-- Normalize CSS -->
-    <link rel="stylesheet" href="../css/normalize.min.css">
+    <link rel="stylesheet" href="../node_modules/normalize.css/normalize.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -61,8 +58,6 @@ $current = 'user';
   </head>
 
   <body class="hold-transition sidebar-mini">
-    <!-- Tag Manager Body -->
-    <?php include_once("../includes/tag_manager_body.php"); ?>
     <div class="wrapper">
 
       <!-- Loader -->

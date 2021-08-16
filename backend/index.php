@@ -6,9 +6,8 @@ if ($_SESSION) {
   header('Location: productos.php');
 }
 
-include('../includes/config.inc.php');
-include_once('../includes/soporte.php');
-include ('../includes/funciones_validar.php');
+require __DIR__ . '/../includes/soporte.php';
+require __DIR__ . '/../includes/funciones_validar.php';
 
 $user = '';
 $errors = [];
@@ -32,7 +31,7 @@ if (isset($_POST['send_login'])) {
   if (!$errors) {
 
     // Comprobar usuario y pass
-    $user = $db->getRepositorioLogs()->login($user, $pass);
+    $user = $db->getRepositorioUsers()->login($user, $pass);
 
     if ($user) {
       session_start();

@@ -1,9 +1,9 @@
 <?php
 echo "
-<script>
-  var sessionId = '".$_SESSION['user']['id']."'
-  var sessionUser = '".$_SESSION['user']['user']."'
-  var sessionEmail = '".$_SESSION['user']['email']."'
+<script type='application/javascript'> 
+  var sessionId = '".isset($_SESSION['user']['id']) ."'
+  var sessionUser = '".isset($_SESSION['user']['user']) ."'
+  var sessionEmail = '".isset($_SESSION['user']['email']) ."'
 </script>
 ";
 ?>
@@ -13,7 +13,7 @@ echo "
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <img src="../img/backend/logo-joker-backend.gif" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text text-center font-weight-light">Joker hotel</span>
+      <span class="brand-text text-center font-weight-light">Pharmavial</span>
     </a>
 
     <!-- Sidebar -->
@@ -24,11 +24,11 @@ echo "
 
           <li class="nav-item">
 
-            <?php $active = $current == 'suites' ? 'active' : ''; ?>
-            <a href="suites.php" class="nav-link <?= $active; ?>">
+            <?php $active = $current == 'products' ? 'active' : ''; ?>
+            <a href="productos.php" class="nav-link <?= $active; ?>">
               <i class="nav-icon fas fa-dollar-sign"></i>
               <p>
-                SUITES
+                PRODUCTOS
                 <i class="right far fa-edit"></i>
               </p>
             </a>
@@ -36,10 +36,10 @@ echo "
 
           <li class="nav-item">
             <?php $active = $current == 'logs' ? 'active' : ''; ?>
-            <a href="logs.php" class="nav-link <?= $active; ?>">
+            <a href="imagenes.php" class="nav-link <?= $active; ?>">
               <i class="nav-icon fas fa-database"></i>
               <p>
-                LOGS CUPONES
+                IMAGENES
                 <i class="right fas fa-eye"></i>
               </p>
             </a>

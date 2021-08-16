@@ -1,9 +1,9 @@
 <?php
 
-include_once('../includes/config.inc.php');
-require_once("repositorio.php");
-require_once("repositorioProductsSQL.php");
-require_once("repositorioUsersSQL.php");
+require __DIR__ . '/../includes/config.inc.php';
+require __DIR__ . '/repositorio.php';
+require __DIR__ . '/repositorioProductsSQL.php';
+require __DIR__ . '/repositorioUsersSQL.php';
 
 class RepositorioSQL extends Repositorio {
 

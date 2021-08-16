@@ -11,6 +11,26 @@ class RepositorioUsersSQL extends repositorioUsers
     $this->conexion = $conexion;
   }
 
+  public function login($user, $password)
+  {
+
+    $pass = md5($password);
+
+    $sql = "
+      SELECT * 
+      FROM users
+      WHERE user = '$user'
+      AND pass = '$pass'
+    ";
+
+    $stmt = $this->conexion->prepare($sql);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $user;
+
+  }
+
   public function getUserById($id)
   {
     $sql = "SELECT * FROM users WHERE id = '$id' ";
