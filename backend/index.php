@@ -55,7 +55,7 @@ if (isset($_POST['send_login'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Login. Hotel alojamiento Jonde. Suites de calidad y con precios inmejorables. Conocenos!">
-    <meta name="author" content="Librecomunicacion">
+    <meta name="author" content="Pablo Lires">
 
     <!-- Favicons -->
     <?php include('includes/favicon.php'); ?>

@@ -35,7 +35,7 @@ echo "
           </li>
 
           <li class="nav-item">
-            <?php $active = $current == 'logs' ? 'active' : ''; ?>
+            <?php $active = $current == 'images' ? 'active' : ''; ?>
             <a href="imagenes.php" class="nav-link <?= $active; ?>">
               <i class="nav-icon fas fa-database"></i>
               <p>

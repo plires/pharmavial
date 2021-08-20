@@ -9,6 +9,11 @@
 	display: none;
 }
 
+.transition{
+  -webkit-transition: all ease-in-out .3s; /* Safari */
+  transition: all ease-in-out .3s;
+}
+
 .backend_login .col-md-6 { display: flex; justify-content: center; align-items: center; }
 
 .backend_suite #suite_id { background-color: #43c1ff; color: white }
@@ -37,6 +42,37 @@
 
 .desc:after {
   content: " ↓";
+}
+
+.content_image {
+	position: relative;
+}
+
+#deleteImage {
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	top: 5px;
+	right: 15px;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+#deleteImage:hover {
+	background-color: red;
+}
+
+#deleteImage:hover i {
+	color: white;
+}
+
+#deleteImage i {
+	color: red;
+	font-size: 1rem;
 }
 
 
