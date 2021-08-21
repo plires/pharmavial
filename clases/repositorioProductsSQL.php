@@ -27,6 +27,17 @@ class RepositorioProductsSQL extends repositorioProducts
 
   }
 
+  public function deleteImage($id)
+  {
+
+    $sql = "DELETE FROM images WHERE id='$id'";
+    $stmt = $this->conexion->prepare($sql);
+    $image_delete = $stmt->execute();
+
+    return $image_delete;
+
+  }
+
   public function getImagesByProductId($id)
   {
     $sql = "

@@ -47,11 +47,62 @@ let app = new Vue({
       $("#form_product").removeClass("was-validated");
     },
 
-    deleteImage(image_id) {
-      console.log(image_id)
+    deleteImage(image_id, index) {
+
+      Swal.fire({
+        title: 'Esta seguro?',
+        text: "No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, eliminar!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          
+          $.ajax({
+            url: 'php/delete_image.php',
+            data: {
+              'id': image_id
+            },
+            type: "POST",
+            success: function(result){
+
+              if ( result == 'no_suite' ) {
+                $("#form_product").removeClass("was-validated");
+                cleanInputs()
+                return true
+              }
+
+              if (result) {
+
+                Swal.fire(
+                  'Eliminado!',
+                  'La imágen ha sido eliminada.',
+                  'success'
+                )
+
+                app.imagesByProduct.splice(app.imagesByProduct.indexOf(index), 1);
+                app.getImages()
+
+              } else {
+
+                cleanInputs()
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Algo salió mal!',
+                })
+                return false
+
+              }
+
+          }})
+
+        }
+      })
+
     }
-
-
 
   },
   computed: {

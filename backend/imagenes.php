@@ -138,7 +138,7 @@ $productos = $db->getRepositorioProducts()->getProducts();
 
                         <div v-for="(image, index) in imagesByProduct" :key="index" class="col-sm-2 content_image">
 
-                          <div title="Borrar Imagen" class="transition" @click="deleteImage(image.id)" id="deleteImage">
+                          <div title="Borrar Imagen" class="transition" @click="deleteImage(image.id, index)" id="deleteImage">
                             <i class="fas fa-trash transition"></i>
                           </div>
 
@@ -238,6 +238,9 @@ $productos = $db->getRepositorioProducts()->getProducts();
 
     <!-- Backend -->
     <script src="js/backend.js"></script>
+
+    <!-- Alerts -->
+    <script src="./../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
     <!-- VUE Backend -->
     <script src="js/vue-backend.js"></script>
