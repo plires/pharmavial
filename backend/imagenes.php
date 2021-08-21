@@ -60,7 +60,7 @@ $productos = $db->getRepositorioProducts()->getProducts();
   </head>
 
   <body class="hold-transition sidebar-mini">
-    <div id="app" class="backend_suite wrapper">
+    <div id="app" class="content_imagenes wrapper">
 
       <!-- Loader -->
       <?php require('includes/loader.php'); ?>
@@ -96,17 +96,40 @@ $productos = $db->getRepositorioProducts()->getProducts();
                   <div class="card-header">
                     <h3 class="card-title">Seleccione el producto para editar sus imágenes</h3>
                   </div>
-                  
-                  <!-- form start -->
-                  <form id="form_product" method="post" class="needs-validation" novalidate>
 
-                    <input type="hidden" id="id_product" name="id_product">
-                    
+                  <div v-if="errors.length > 0" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Por favor corregí la siguiente <strong>información</strong>
+                    <button @click="errors = []" type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <ul>
+                      <li v-for="error in errors" v-cloak>{{ error }}</li>
+                    </ul>
+                  </div>
+
+                  <!-- form start -->
+                  <form id="form_image" enctype="multipart/form-data" method="post" class="needs-validation" novalidate>
+
                     <div class="card-body">
+
+                      <div class="form-group text-right">
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                          <label class="btn btn-primary active">
+                            <input @click="changeLanguage('es')" type="radio" id="option1" checked>Español
+                          </label>
+                          <label class="btn btn-primary">
+                            <input @click="changeLanguage('en')" type="radio" id="option2">Ingles
+                          </label>
+                        </div>
+                      </div>
 
                       <div class="form-group">
                         <label>Seleccionar Producto</label>
-                        <select required v-model="selected" id="product_id" name="name" class="custom-select">
+                        <select 
+                          required 
+                          v-model="selected" 
+                          id="product_id" 
+                          class="custom-select">
 
                           <option value="0" selected>Seleccione producto para editar imágenes</option>
                           
@@ -123,18 +146,7 @@ $productos = $db->getRepositorioProducts()->getProducts();
 
                       </div>
 
-                      <div class="form-group mb-5">
-                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                          <label class="btn btn-primary active">
-                            <input @click="changeLanguage('es')" type="radio" name="options" id="option1" checked> Español
-                          </label>
-                          <label class="btn btn-primary">
-                            <input @click="changeLanguage('en')" type="radio" name="options" id="option2"> Ingles
-                          </label>
-                        </div>
-                      </div>
-
-                      <div v-if="imagesByProduct.length > 0" class="row">
+                      <div v-if="imagesByProduct.length > 0 && selected != 0" class="row">
 
                         <div v-for="(image, index) in imagesByProduct" :key="index" class="col-sm-2 content_image">
 
@@ -157,38 +169,43 @@ $productos = $db->getRepositorioProducts()->getProducts();
 
                         </div>
 
+                      </div>
+
+                      <div v-else-if="selected != 0">
+                        <p class="parrafo_sin_imagenes">Producto sin imágenes</p>
+                      </div>
+
+                      <div v-if="selected != 0"class="row">
                         <div class="col-sm-12">
                           <div class="form-group">
                             <hr>
                             <div class="form-row">
                               
-                              <div class="form-group col-md-12 text-center">
-                                <h3>Agregr nueva imagen</h3>
-                              </div>
-
-                              <div class="form-group col-md-6">
-                                <label for="presentation">Seleccionar imágen</label>
+                              <div class="form-group col-md-5">
+                                <label for="presentation">Agregar imágen (*) (Recomendado: 600x400px o proporcional)</label>
                                 <div class="custom-file">
-                                  <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-                                  <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
-                                </div>
-                                <div class="invalid-feedback">
-                                  Ingrese una imágen válida
+                                  <input 
+                                    type="file" 
+                                    class="custom-file-input" 
+                                    id="customFileLang" 
+                                    ref="myFile"
+                                    lang="es">
+                                  <label class="custom-file-label" for="customFileLang">Agregar Imágen</label>
                                 </div>
                               </div>
 
-                              <div class="form-group col-md-6">
-                                <label for="units_per_box">Ingrese un texto alternativo para la nueva imagen</label>
-                                <input type="text" class="form-control" id="units_per_box" name="units_per_box" placeholder="Unidades por Caja">
+                              <div class="form-group col-md-5">
+                                <label for="alt">Ingrese un texto alternativo para la nueva imagen (opcional)</label>
+                                <input type="text" class="form-control" id="alt" name="alt" placeholder="(Una buena elección puede ser colocar el nombre del producto)">
                               </div>
+
+                              <div class="form-group col-md-2">
+                                <button @click.prevent="sendImage" class="btn btn-primary">Subir Imágen</button>
+                              </div>
+
                             </div>
                           </div>
                         </div>
-
-                      </div>
-
-                      <div v-else>
-                        nada
                       </div>
 
                     </div>

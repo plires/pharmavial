@@ -104,6 +104,17 @@ $productos = $db->getRepositorioProducts()->getProducts();
                     
                     <div class="card-body">
 
+                      <div class="form-group text-right">
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                          <label class="btn btn-primary active">
+                            <input @click="changeLanguage('es')" type="radio" name="options" id="option1" checked> Español
+                          </label>
+                          <label class="btn btn-primary">
+                            <input @click="changeLanguage('en')" type="radio" name="options" id="option2"> Ingles
+                          </label>
+                        </div>
+                      </div>
+
                       <div class="form-group">
                         <label>Seleccionar Producto</label>
                         <select required v-model="selected" id="product_id" name="name" class="custom-select">
@@ -123,95 +134,88 @@ $productos = $db->getRepositorioProducts()->getProducts();
 
                       </div>
 
-                      <div class="form-group mb-5">
-                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                          <label class="btn btn-primary active">
-                            <input @click="changeLanguage('es')" type="radio" name="options" id="option1" checked> Español
-                          </label>
-                          <label class="btn btn-primary">
-                            <input @click="changeLanguage('en')" type="radio" name="options" id="option2"> Ingles
-                          </label>
-                        </div>
-                      </div>
+                      <div v-bind:class="selected != 0 ? '' : 'd-none'">
+                        
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="name">Nombre del Producto</label>
+                            <input class="form-control" required type="text" id="name" name="name" placeholder="Nombre del Producto">
+                            <div class="invalid-feedback">
+                              Ingrese el nombre del producto
+                            </div>
+                          </div>
 
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="name">Nombre del Producto</label>
-                          <input required type="text" class="form-control" id="name" name="name" placeholder="Nombre del Producto">
-                          <div class="invalid-feedback">
-                            Ingrese el nombre del producto
+                          <div class="form-group col-md-6">
+                            <label for="active_principle">Principio Activo</label>
+                            <input required type="text" class="form-control" id="active_principle" name="active_principle" placeholder="Principio Activo">
+                            <div class="invalid-feedback">
+                              Ingrese el principio activo
+                            </div>
                           </div>
                         </div>
 
-                        <div class="form-group col-md-6">
-                          <label for="active_principle">Principio Activo</label>
-                          <input required type="text" class="form-control" id="active_principle" name="active_principle" placeholder="Principio Activo">
-                          <div class="invalid-feedback">
-                            Ingrese el principio activo
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="presentation">Presentación</label>
+                            <input required type="text" class="form-control" id="presentation" name="presentation" placeholder="Presentación">
+                            <div class="invalid-feedback">
+                              Ingrese la presentación
+                            </div>
                           </div>
-                        </div>
-                      </div>
 
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="presentation">Presentación</label>
-                          <input required type="text" class="form-control" id="presentation" name="presentation" placeholder="Presentación">
-                          <div class="invalid-feedback">
-                            Ingrese la presentación
-                          </div>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                          <label for="units_per_box">Unidades por Caja</label>
-                          <input required type="text" class="form-control" id="units_per_box" name="units_per_box" placeholder="Unidades por Caja">
-                          <div class="invalid-feedback">
-                            Ingrese las unidades por caja
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="pharmaceutical_form">Forma Farmacéutica</label>
-                          <input required type="text" class="form-control" id="pharmaceutical_form" name="pharmaceutical_form" placeholder="Forma Farmacéutica">
-                          <div class="invalid-feedback">
-                            Ingrese la forma farmacéutica
+                          <div class="form-group col-md-6">
+                            <label for="units_per_box">Unidades por Caja</label>
+                            <input required type="text" class="form-control" id="units_per_box" name="units_per_box" placeholder="Unidades por Caja">
+                            <div class="invalid-feedback">
+                              Ingrese las unidades por caja
+                            </div>
                           </div>
                         </div>
 
-                        <div class="form-group col-md-6">
-                          <label for="therapeutic_line">Línea Terapéutica</label>
-                          <input required type="text" class="form-control" id="therapeutic_line" name="therapeutic_line" placeholder="Línea Terapéutica">
-                          <div class="invalid-feedback">
-                            Ingrese la línea terapéutica
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="pharmaceutical_form">Forma Farmacéutica</label>
+                            <input required type="text" class="form-control" id="pharmaceutical_form" name="pharmaceutical_form" placeholder="Forma Farmacéutica">
+                            <div class="invalid-feedback">
+                              Ingrese la forma farmacéutica
+                            </div>
                           </div>
-                        </div>
-                      </div>
 
-                      <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <label for="link">Link</label>
-                          <input required type="text" class="form-control" id="link" name="link" placeholder="Link">
-                          <div class="invalid-feedback">
-                            Ingrese el prospecto
+                          <div class="form-group col-md-6">
+                            <label for="therapeutic_line">Línea Terapéutica</label>
+                            <input required type="text" class="form-control" id="therapeutic_line" name="therapeutic_line" placeholder="Línea Terapéutica">
+                            <div class="invalid-feedback">
+                              Ingrese la línea terapéutica
+                            </div>
                           </div>
                         </div>
 
-                        <div class="form-group col-md-6">
-                          <label for="language">Idioma (es = Español | en = Ingles)</label>
-                          <input required type="text" class="form-control" id="language" name="language" placeholder="Idioma">
-                          <div class="invalid-feedback">
-                            Ingrese el idioma para visualizar en el sitio
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="link">Link</label>
+                            <input required type="text" class="form-control" id="link" name="link" placeholder="Link">
+                            <div class="invalid-feedback">
+                              Ingrese el prospecto
+                            </div>
+                          </div>
+
+                          <div class="form-group col-md-6">
+                            <label for="language">Idioma (es = Español | en = Ingles)</label>
+                            <input required type="text" class="form-control" id="language" name="language" placeholder="Idioma">
+                            <div class="invalid-feedback">
+                              Ingrese el idioma para visualizar en el sitio
+                            </div>
                           </div>
                         </div>
+
+                        <div class="card-footer">
+                          <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+
                       </div>
 
                     </div>
                     <!-- /.card-body -->
-
-                    <div class="card-footer">
-                      <button type="submit" class="btn btn-primary">Guardar</button>
-                    </div>
 
                   </form>
                 </div>

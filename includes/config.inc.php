@@ -4,7 +4,7 @@
 ///Valores URI
 ////////////////////////
 define('URI', $_SERVER['REQUEST_URI']);
-define('BASE', 'http://pharmavial.test/');
+define ('BASE', (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/' );
 
 ////////////////////////
 ///Valores de DB Remota

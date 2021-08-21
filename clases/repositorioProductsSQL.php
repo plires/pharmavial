@@ -1,10 +1,15 @@
 <?php
-require __DIR__  . '/../vendor/autoload.php';
+require __DIR__  . '/../backend/vendor/autoload.php';
 
 require_once("repositorioProducts.php");
 
+// import the Intervention Image Manager Class
+use Intervention\Image\ImageManager;
+
 class RepositorioProductsSQL extends repositorioProducts 
 {
+
+
   protected $conexion;
 
   public function __construct($conexion) 
@@ -24,6 +29,53 @@ class RepositorioProductsSQL extends repositorioProducts
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
     return $product;
+
+  }
+
+  public function uploadImage($file, $post) {
+
+    if ( empty($file) || empty($post) ) {
+      header("HTTP/1.1 500 Internal Server Error");
+    }
+
+    $alt = '';
+    $alt = isset($post['alt']);
+    $product_id = (int)$post['product_id'];
+
+    $name = md5(rand(100, 200));
+
+    $ext = explode('.',$_FILES['image']['name']);
+
+    $filename = $name.'.'.$ext[1];
+
+    $destination = $_SERVER['DOCUMENT_ROOT'] . 'img/productos/'.$filename;
+
+    $location =  $_FILES['image']['tmp_name'];
+
+    try {
+
+      // Optimizar imagen
+      self::optimizeImage($filename, $location);
+
+      // Insertar en base de datos
+      $sql = "INSERT INTO images values(default, :url, :alt, :product_id)";
+
+      $stmt = $this->conexion->prepare($sql);
+      
+      $stmt->bindValue(":url", $filename, PDO::PARAM_STR);
+      $stmt->bindValue(":alt", $alt, PDO::PARAM_STR);
+      $stmt->bindValue(":product_id", $product_id, PDO::PARAM_STR);
+            
+      $save = $stmt->execute();
+
+      return $save;
+
+    } catch (Exception $e) {
+
+      // lanzar error
+      header("HTTP/1.1 500 Internal Server Error");
+
+    }
 
   }
 
@@ -107,6 +159,16 @@ class RepositorioProductsSQL extends repositorioProducts
 
     return $stmt->execute();
 
+  }
+
+  function optimizeImage($filename, $location) {
+    // Optimizar imagen
+    $manager = new ImageManager(array('driver' => 'imagick'));
+
+    $image = $manager->make($location)
+      ->resize(600, 400)
+      ->encode('jpg', 60)
+      ->save($_SERVER['DOCUMENT_ROOT'] . 'img/productos/'.$filename, 90);
   }
 
 }

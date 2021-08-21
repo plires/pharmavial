@@ -6,7 +6,9 @@ let app = new Vue({
       imagesByProduct: [],
       images: [],
       productsByLang: [],
-      selected: 0
+      product_id: '',
+      selected: 0,
+      errors: []
     }
   },
   mounted() {
@@ -34,17 +36,88 @@ let app = new Vue({
       this.productsByLang = []
       this.productsByLang = this.products.filter( (product) => product.language == lang )
       this.selected = 0
-      this.cleanInputs()
 
       if (this.imagesByProduct) {
         this.imagesByProduct = []
       }
     },
 
-    cleanInputs() {
-      this.selected = 0
-      $(".form-control").val("");
-      $("#form_product").removeClass("was-validated");
+    checkFormImage: function () { 
+
+      let file = this.$refs.myFile.files[0];
+
+      if ( file && file.type == 'image/jpeg' && file.size <= 2097152 ) {
+        return true
+      } 
+
+      this.errors = []
+
+      if (!file) {
+        this.errors.push('Suba una imágen.')
+      }
+
+      if (file.type !== 'image/jpeg') {
+        this.errors.push('Solo se permiten imagenes de tipo .jpg')
+      }
+
+      if (file.size > 2097152) {
+        this.errors.push('Máximo 2 mb.')
+      }
+
+      return false
+
+    },
+
+    sendImage() {
+
+      let checked = this.checkFormImage()
+
+      if (checked) { 
+        
+        const form = document.querySelector('#form_image')
+        var formData = new FormData(form);
+
+        var imagefile = document.querySelector('#customFileLang');
+
+        formData.append("image", imagefile.files[0]);
+        formData.append("product_id", this.imagesByProduct[0].product_id);
+
+        axios.post('php/upload_image.php', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(response => {
+
+          if (response.data) {
+
+            app.errors = []
+            Swal.fire(
+              'Éxito!',
+              'La imágen ha sido cargada satisfactoriamente.',
+              'success'
+            )
+
+            this.getImages()
+            // VER COMO HACER PARA QUE SE ACTUALICE Y SE MUESTRE LA IMAGEN RECIEN SUBIDA
+
+          } else {
+            app.errors = []
+            app.errors.push('La imágen es requerida. Sólo se permiten archivos JPG y menores a 2 mb.')
+          }
+
+        })
+        .catch(errors => {
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ocurrió un error en el servidor... intente mas tarde por favor!',
+          })
+          
+        })
+
+      }
+
     },
 
     deleteImage(image_id, index) {
@@ -69,8 +142,6 @@ let app = new Vue({
             success: function(result){
 
               if ( result == 'no_suite' ) {
-                $("#form_product").removeClass("was-validated");
-                cleanInputs()
                 return true
               }
 
@@ -87,7 +158,6 @@ let app = new Vue({
 
               } else {
 
-                cleanInputs()
                 Swal.fire({
                   icon: 'error',
                   title: 'Oops...',
@@ -100,9 +170,10 @@ let app = new Vue({
           }})
 
         }
+
       })
 
-    }
+    },
 
   },
   computed: {

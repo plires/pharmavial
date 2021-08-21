@@ -16,8 +16,6 @@
 
 .backend_login .col-md-6 { display: flex; justify-content: center; align-items: center; }
 
-.backend_suite #suite_id { background-color: #43c1ff; color: white }
-
 .logs h1 { color: grey; font-size: 2rem; margin-top: 60px; font-weight: 300; }
 .logs .table-dark { font-size: 0.75rem; font-weight: 100; }
 .logs .table-dark td { text-align: left; }
@@ -75,6 +73,22 @@
 	font-size: 1rem;
 }
 
+.content_imagenes .parrafo_sin_imagenes {
+	margin: 45px 0 30px 0;
+	font-weight: 700;
+	text-align: center;
+	color: grey;
+}
+
+.content_imagenes .form-group.col-md-2 {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+
+.content_imagenes .form-group.col-md-2 button {
+	width: 100%;
+}
 
 /* MEDIA QUERIES */
 
