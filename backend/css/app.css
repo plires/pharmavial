@@ -90,6 +90,27 @@
 	width: 100%;
 }
 
+.content_prospectos .prospecto_actual {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	text-align: center;
+	font-size: 1.5rem;
+	color: orange;
+	display: inline-block;
+	margin: auto;
+}
+
+.content_prospectos .prospecto_actual:hover {
+	opacity: 0.6;
+}
+
+.content_prospectos .prospecto_actual i {
+	font-size: 2.5rem;
+	margin-left: 10px;
+}
+
 /* MEDIA QUERIES */
 
 /* Dispositivos extra pequeños (teléfonos de retrato, menos de 576px) */

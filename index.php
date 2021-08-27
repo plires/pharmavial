@@ -319,7 +319,7 @@
                   <p class="presentacion"><span>Presentación: </span> {{ product.presentation }}</p>
                   <p class="unidades_caja"><span>Unidad por caja: </span> {{ product.units_per_box }}</p>
                   <p class="linea_terapeutica"><span>Línea terapeutica: </span> {{ product.therapeutic_line }}</p>
-                  <a class="transition" :href="product.link" target="_blank" rel="noopener noreferrer">Descargar prospecto</a>
+                  <a v-if="product.link" class="transition" :href="'prospectos/' + product.link" target="_blank" rel="noopener noreferrer">Descargar prospecto</a>
                 </div>  
                 
               </div>

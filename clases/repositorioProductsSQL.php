@@ -78,6 +78,45 @@ class RepositorioProductsSQL extends repositorioProducts
 
   }
 
+  public function uploadPdf($file, $post) {
+    
+    $product_id = (int)$post['product_id'];
+
+    $name = md5(rand(100, 200));
+
+    $ext = pathinfo($_FILES['uploadProspect']['name'], PATHINFO_EXTENSION);
+
+    $filename = $name.'.'.$ext;
+
+    $destination = $_SERVER['DOCUMENT_ROOT'] . 'prospectos/'.$filename;
+
+    $location =  $_FILES['uploadProspect']['tmp_name'];
+
+    move_uploaded_file( $location, $destination );
+
+    try {
+
+      // Insertar en base de datos
+      $sql = "
+      UPDATE products SET link = :link WHERE id = '$product_id' ";
+
+      $stmt = $this->conexion->prepare($sql);
+      
+      $stmt->bindValue(":link", $filename, PDO::PARAM_STR);
+
+      $save = $stmt->execute();
+
+      return $save;
+      
+    } catch (Exception $e) {
+      
+      // lanzar error
+      header("HTTP/1.1 500 Internal Server Error");
+
+    }
+
+  }
+
   public function deleteImage($id)
   {
 

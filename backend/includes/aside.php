@@ -62,6 +62,17 @@ echo "
           </li>
 
           <li class="nav-item">
+            <?php $active = $current == 'prospects' ? 'active' : ''; ?>
+            <a href="prospectos.php" class="nav-link <?= $active; ?>">
+              <i class="nav-icon fas fa-database"></i>
+              <p>
+                PROSPECTOS
+                <i class="right fas fa-eye"></i>
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <?php $active = $current == 'user' ? 'active' : ''; ?>
             <a href="#" class="nav-link <?= $active; ?>">
               <i class="nav-icon fas fa-user"></i>
