@@ -31,10 +31,10 @@ $current = 'user';
     <title>Pharmavial | Laboratorio IBC - Cambio de pass</title>
 
     <!-- Normalize CSS -->
-    <link rel="stylesheet" href="../css/normalize.min.css">
+    <link rel="stylesheet" href="../node_modules/normalize.css/normalize.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">

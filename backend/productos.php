@@ -31,7 +31,7 @@ $productos = $db->getRepositorioProducts()->getProducts();
     <!-- Favicons -->
     <?php include('includes/favicon.php'); ?>
 
-    <title>Pharmavial | Laboratorio IBC | Productos</title>
+    <title>Pharmavial | Laboratorio IBC | Edición de Productos</title>
 
     <!-- Normalize CSS -->
     <link rel="stylesheet" href="../node_modules/normalize.css/normalize.css">
@@ -78,7 +78,7 @@ $productos = $db->getRepositorioProducts()->getProducts();
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-12 text-center">
-                <h1 class="m-0">Datos del Producto.</h1>
+                <h1 class="m-0">Edición de productos.</h1>
               </div>
             </div>
           </div>
@@ -192,14 +192,6 @@ $productos = $db->getRepositorioProducts()->getProducts();
 
                         <div class="form-row">
                           <div class="form-group col-md-6">
-                            <label for="link">Link</label>
-                            <input required type="text" class="form-control" id="link" name="link" placeholder="Link">
-                            <div class="invalid-feedback">
-                              Ingrese el prospecto
-                            </div>
-                          </div>
-
-                          <div class="form-group col-md-6">
                             <label for="language">Idioma (es = Español | en = Ingles)</label>
                             <input required type="text" class="form-control" id="language" name="language" placeholder="Idioma">
                             <div class="invalid-feedback">
@@ -260,7 +252,7 @@ $productos = $db->getRepositorioProducts()->getProducts();
     <script src="js/backend.js"></script>
 
     <!-- VUE Backend -->
-    <script src="js/vue-backend.js"></script>
+    <script src="js/vue-backend-edit-product.js"></script>
 
     <!-- Productos -->
     <script src="js/products.js"></script>

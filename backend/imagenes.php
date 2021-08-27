@@ -140,10 +140,6 @@ $productos = $db->getRepositorioProducts()->getProducts();
 
                         </select>
 
-                        <div class="invalid-feedback">
-                          Seleccione un producto
-                        </div>
-
                       </div>
 
                       <div v-if="imagesByProduct.length > 0 && selected != 0" class="row">
@@ -260,7 +256,7 @@ $productos = $db->getRepositorioProducts()->getProducts();
     <script src="./../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
     <!-- VUE Backend -->
-    <script src="js/vue-backend.js"></script>
+    <script src="js/vue-backend-image.js"></script>
 
     <!-- Images -->
     <script src="js/images.js"></script>

@@ -79,8 +79,8 @@ let app = new Vue({
 
         var imagefile = document.querySelector('#customFileLang');
 
-        formData.append("image", imagefile.files[0]);
-        formData.append("product_id", this.imagesByProduct[0].product_id);
+        formData.append("image", imagefile.files[0])
+        formData.append("product_id", this.selected)
 
         axios.post('php/upload_image.php', formData, {
           headers: {
@@ -88,7 +88,7 @@ let app = new Vue({
           }
         }).then(response => {
 
-          if (response.data) {
+          if (response.data.save) {
 
             app.errors = []
             Swal.fire(
@@ -97,8 +97,23 @@ let app = new Vue({
               'success'
             )
 
-            this.getImages()
-            // VER COMO HACER PARA QUE SE ACTUALICE Y SE MUESTRE LA IMAGEN RECIEN SUBIDA
+            // async function foo() {
+            //   let res = await axios.get('php/get_images.php')
+            //   this.images = await res.data
+            //   var newImage = await app.images.filter( (image) => image.id == response.data.image_add ) 
+            //   await app.imagesByProduct.push(newImage[0])
+            // }
+
+            // foo()
+
+            app.getImages()
+            // VER COMO HACER PARA QUE SE ACTUALICE Y SE MUESTRE LA IMAGEN RECIEN SUBIDA (se deberia buscar con promesas o async await en vez de settimeout) 
+            setTimeout(function(){ 
+
+              var newImage = app.images.filter( (image) => image.id == response.data.image_add ) 
+              app.imagesByProduct.push(newImage[0])
+
+            }, 1000);
 
           } else {
             app.errors = []
@@ -153,7 +168,7 @@ let app = new Vue({
                   'success'
                 )
 
-                app.imagesByProduct.splice(app.imagesByProduct.indexOf(index), 1);
+                app.imagesByProduct.splice(app.imagesByProduct.indexOf(index), 1)
                 app.getImages()
 
               } else {

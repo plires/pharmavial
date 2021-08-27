@@ -70,11 +70,11 @@ let app = new Vue({
       var result = this.products
 
       if (searchActivePrinciple != '') {
-        result = result.filter(product => product.active_principle.toLowerCase().includes(searchActivePrinciple.toLowerCase())); // aca no filtra
+        result = result.filter(product => product.active_principle.toString().toLowerCase().includes(searchActivePrinciple.toString().toLowerCase())); // aca no filtra
       } 
 
       if (searchTherapeuticAction != '') {
-        result = result.filter(product => product.therapeutic_line.toLowerCase().includes(searchTherapeuticAction.toLowerCase())); // aca no filtra
+        result = result.filter(product => product.therapeutic_line.toString().toLowerCase().includes(searchTherapeuticAction.toString().toLowerCase())); // aca no filtra
       }
 
       this.refreshSelects(result)

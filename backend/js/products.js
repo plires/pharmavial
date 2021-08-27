@@ -1,14 +1,10 @@
-const form_product = document.getElementById("form_product");
 const select = document.getElementById('product_id');
 const idProduct = document.getElementById('id_product');
 const name = document.getElementById('name');
 const activePrinciple = document.getElementById('active_principle');
-const presentation = document.getElementById('presentation');
 const unitsPerBox = document.getElementById('units_per_box');
 const pharmaceuticalForm = document.getElementById('pharmaceutical_form');
 const therapeuticLine = document.getElementById('therapeutic_line');
-const link = document.getElementById('link');
-const language = document.getElementById('language');
 
 select.addEventListener('change',
 function(){
@@ -47,7 +43,6 @@ function(){
         unitsPerBox.value = product.units_per_box
         pharmaceuticalForm.value = product.pharmaceutical_form
         therapeuticLine.value = product.therapeutic_line
-        link.value = product.link
         language.value = product.language
       }
 
@@ -107,7 +102,6 @@ function resetInputs(){
   unitsPerBox.value = ''
   pharmaceuticalForm.value = ''
   therapeuticLine.value = ''
-  link.value = ''
   language.value = ''
 }
 

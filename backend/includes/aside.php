@@ -12,7 +12,7 @@ echo "
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="../img/backend/logo-joker-backend.gif" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="../img/backend/pharmavial-circular.png" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text text-center font-weight-light">Pharmavial</span>
     </a>
 
@@ -29,9 +29,25 @@ echo "
               <i class="nav-icon fas fa-dollar-sign"></i>
               <p>
                 PRODUCTOS
-                <i class="right far fa-edit"></i>
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="add-product.php" class="nav-link">
+                  <i class="fas fa-lock nav-icon"></i>
+                  <p>Agregar Producto</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="productos.php" class="nav-link">
+                  <i class="fas fa-user-edit nav-icon"></i>
+                  <p>Editar producto</p>
+                </a>
+              </li>
+            </ul>
+
           </li>
 
           <li class="nav-item">

@@ -9,7 +9,6 @@ use Intervention\Image\ImageManager;
 class RepositorioProductsSQL extends repositorioProducts 
 {
 
-
   protected $conexion;
 
   public function __construct($conexion) 
@@ -34,19 +33,15 @@ class RepositorioProductsSQL extends repositorioProducts
 
   public function uploadImage($file, $post) {
 
-    if ( empty($file) || empty($post) ) {
-      header("HTTP/1.1 500 Internal Server Error");
-    }
-
     $alt = '';
-    $alt = isset($post['alt']);
+    $alt = $post['alt'];
     $product_id = (int)$post['product_id'];
 
     $name = md5(rand(100, 200));
 
-    $ext = explode('.',$_FILES['image']['name']);
+    $ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
 
-    $filename = $name.'.'.$ext[1];
+    $filename = $name.'.'.$ext;
 
     $destination = $_SERVER['DOCUMENT_ROOT'] . 'img/productos/'.$filename;
 
@@ -64,11 +59,15 @@ class RepositorioProductsSQL extends repositorioProducts
       
       $stmt->bindValue(":url", $filename, PDO::PARAM_STR);
       $stmt->bindValue(":alt", $alt, PDO::PARAM_STR);
-      $stmt->bindValue(":product_id", $product_id, PDO::PARAM_STR);
-            
-      $save = $stmt->execute();
+      $stmt->bindValue(":product_id", $product_id, PDO::PARAM_INT);
 
-      return $save;
+      $save = $stmt->execute();
+      $id = $this->conexion->lastInsertId();
+
+      $result['save'] = $save;
+      $result['image_add'] = $id;
+
+      return $result;
 
     } catch (Exception $e) {
 
@@ -129,6 +128,35 @@ class RepositorioProductsSQL extends repositorioProducts
 
   }
 
+  public function addProduct($post) {
+    
+    try {
+
+      // Insertar en base de datos
+      $sql = "INSERT INTO products values(default, :name, :active_principle, :presentation, :units_per_box, :pharmaceutical_form, :therapeutic_line, :link, :language)";
+
+      $stmt = $this->conexion->prepare($sql);
+
+      $stmt->bindValue(":name", $post['name'], PDO::PARAM_STR);
+      $stmt->bindValue(":active_principle", $post['active_principle'], PDO::PARAM_STR);
+      $stmt->bindValue(":presentation", $post['presentation'], PDO::PARAM_STR);
+      $stmt->bindValue(":units_per_box", $post['units_per_box'], PDO::PARAM_STR);
+      $stmt->bindValue(":pharmaceutical_form", $post['pharmaceutical_form'], PDO::PARAM_STR);
+      $stmt->bindValue(":therapeutic_line", $post['therapeutic_line'], PDO::PARAM_STR);
+      $stmt->bindValue(":link", NULL, PDO::PARAM_STR);
+      $stmt->bindValue(":language", $post['language'], PDO::PARAM_STR);
+
+      return $stmt->execute();
+
+    } catch (Exception $e) {
+
+      // lanzar error
+      header("HTTP/1.1 500 Internal Server Error");
+
+    }
+
+  }
+
   public function saveProduct($post)
   {
 
@@ -142,7 +170,6 @@ class RepositorioProductsSQL extends repositorioProducts
         units_per_box = :units_per_box,
         pharmaceutical_form = :pharmaceutical_form,
         therapeutic_line = :therapeutic_line,
-        link = :link,
         language = :language
       WHERE id = '$id' ";
 
@@ -154,7 +181,6 @@ class RepositorioProductsSQL extends repositorioProducts
     $stmt->bindValue(":units_per_box", $post['units_per_box'], PDO::PARAM_STR);
     $stmt->bindValue(":pharmaceutical_form", $post['pharmaceutical_form'], PDO::PARAM_STR);
     $stmt->bindValue(":therapeutic_line", $post['therapeutic_line'], PDO::PARAM_STR);
-    $stmt->bindValue(":link", $post['link'], PDO::PARAM_STR);
     $stmt->bindValue(":language", $post['language'], PDO::PARAM_STR);
 
     return $stmt->execute();
@@ -162,6 +188,7 @@ class RepositorioProductsSQL extends repositorioProducts
   }
 
   function optimizeImage($filename, $location) {
+    
     // Optimizar imagen
     $manager = new ImageManager(array('driver' => 'imagick'));
 
@@ -169,6 +196,7 @@ class RepositorioProductsSQL extends repositorioProducts
       ->resize(600, 400)
       ->encode('jpg', 60)
       ->save($_SERVER['DOCUMENT_ROOT'] . 'img/productos/'.$filename, 90);
+
   }
 
 }
