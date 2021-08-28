@@ -105,7 +105,7 @@ $productos = $db->getRepositorioProducts()->getProducts();
                   </div>
 
                   <!-- form start -->
-                  <form id="form_product" enctype="multipart/form-data" method="post" class="needs-validation" novalidate>
+                  <form id="form_product" enctype="multipart/form-data" method="post">
 
                     <div class="card-body">
 
@@ -141,11 +141,17 @@ $productos = $db->getRepositorioProducts()->getProducts();
 
                       <div v-if="prospect && selected != 0" class="mb-5 text-center">
                         <a 
-                          class="prospecto_actual transition" 
+                          class="btn btn-success transition" 
                           target="_blank" 
                           :href="'./../prospectos/' + prospect">Ver Prospecto Cargado
                           <i class="fas fa-file-pdf"></i>
                         </a>
+
+                        <button @click.prevent="deleteCurrentProspect(selected)" class="btn btn-danger ml-2 transition">
+                          Eliminar
+                          <i class="far fa-trash-alt"></i>
+                        </button>
+
                       </div>
 
                       <div v-if="selected != 0" class="form-group">
@@ -153,7 +159,6 @@ $productos = $db->getRepositorioProducts()->getProducts();
                         <div class="input-group">
                           <div class="custom-file">
                             <input 
-                              required 
                               type="file" 
                               class="custom-file-input" 
                               id="uploadProspect" 

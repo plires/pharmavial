@@ -242,7 +242,7 @@
                     id="therapeuticAction"
                     name="therapeuticAction">
 
-                    <option class="first_option" value="" selected>Acciones Terapéuticas (Todos)</option>
+                    <option class="first_option" value="" selected>Líneas Terapéuticas (Todos)</option>
                     <option 
                       v-for="(therapeuticAction, index) in selectTherapeuticAction" 
                       :key="index" 
@@ -259,7 +259,7 @@
                     id="activePrinciple"
                     name="activePrinciple">
 
-                    <option class="first_option" value="" selected>Principio Activo (Todos)</option>
+                    <option class="first_option" value="" selected>Principios Activos (Todos)</option>
                     <option 
                       v-for="(activePrinciple, index) in selectActivePrinciple" 
                       :key="index" 

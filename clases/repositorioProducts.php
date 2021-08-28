@@ -9,6 +9,7 @@ abstract class repositorioProducts {
   public abstract function addProduct($post);
   public abstract function uploadImage($file, $post);
   public abstract function uploadPdf($file, $post);
+  public abstract function delCurrentProspect($id);
 }
 
 ?>

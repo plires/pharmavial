@@ -59,17 +59,15 @@ let app = new Vue({
 
     sendNewProspect() {
 
-      // let checked = this.checkFormProspect()
+      let checked = this.checkFormProspect()
 
-      if (true) { 
+      if (checked) { 
         
         const form = document.querySelector('#form_product')
         var formData = new FormData(form);
 
-        var pdf = document.querySelector('#uploadProspect');
-
-        formData.append("pdf", pdf.files[0])
         formData.append("product_id", this.selected)
+        formData.append("old_file_name_prospect", this.prospect)
 
         axios.post('php/save_prospect.php', formData, {
           headers: {
@@ -87,6 +85,7 @@ let app = new Vue({
             )
 
             app.getProducts()
+            app.changeLanguage('es')
 
           } else {
             app.errors = []
@@ -107,6 +106,61 @@ let app = new Vue({
       }
 
     },
+
+    deleteCurrentProspect(product_id) {
+
+      Swal.fire({
+        title: 'Esta seguro?',
+        text: "No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, eliminar!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          
+          const form = document.querySelector('#form_product')
+          var formData = new FormData(form);
+
+          formData.append("id", product_id)
+
+          axios.post('php/delete_current_prospect.php', formData)
+          .then(response => {
+
+            if (response.data) {
+
+              app.errors = []
+              Swal.fire(
+                'Éxito!',
+                'El prospecto ha sido eliminado satisfactoriamente.',
+                'success'
+              )
+
+              app.getProducts()
+              app.changeLanguage('es')
+
+            } else {
+              app.errors = []
+              app.errors.push('Hubo un error, intente nuevamente por favor.')
+            }
+
+          })
+          .catch(errors => {
+
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Ocurrió un error en el servidor... intente mas tarde por favor!',
+            })
+            
+          })
+
+        }
+
+      })
+      
+    }
 
   },
   computed: {

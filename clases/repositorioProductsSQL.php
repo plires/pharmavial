@@ -78,35 +78,51 @@ class RepositorioProductsSQL extends repositorioProducts
 
   }
 
-  public function uploadPdf($file, $post) {
-    
+  public function moveFileInDirectory($file, $post) {
     $product_id = (int)$post['product_id'];
 
     $name = md5(rand(100, 200));
 
-    $ext = pathinfo($_FILES['uploadProspect']['name'], PATHINFO_EXTENSION);
+    $ext = pathinfo($file['uploadProspect']['name'], PATHINFO_EXTENSION);
 
     $filename = $name.'.'.$ext;
 
     $destination = $_SERVER['DOCUMENT_ROOT'] . 'prospectos/'.$filename;
 
-    $location =  $_FILES['uploadProspect']['tmp_name'];
+    $location =  $file['uploadProspect']['tmp_name'];
 
-    move_uploaded_file( $location, $destination );
+    $data_upload['product_id'] = $product_id;
+    $data_upload['new_filename'] = $filename;
+    $data_upload['move_file'] =  move_uploaded_file( $location, $destination );
+
+    return $data_upload;
+
+  }
+
+  public function uploadPdf($file, $post) {
 
     try {
 
-      // Insertar en base de datos
-      $sql = "
-      UPDATE products SET link = :link WHERE id = '$product_id' ";
-
-      $stmt = $this->conexion->prepare($sql);
+      // Mover el archivo al directorio
+      $data_upload = $this->moveFileInDirectory($file, $post);
       
-      $stmt->bindValue(":link", $filename, PDO::PARAM_STR);
+      $product_id = $data_upload['product_id'];
+      $new_filename = $data_upload['new_filename'];
+      $move_file = $data_upload['move_file'];
 
-      $save = $stmt->execute();
+      if ($move_file) {
 
-      return $save;
+        // Insertar en base de datos
+        $save_in_bdd = $this->saveNewProspectInBdd($product_id, $new_filename);
+
+        //Borrar el PDF antiguo del servidor si el registro nuevo se guardo correctamente
+        if ( $save_in_bdd && $post['old_file_name_prospect'] ) {
+          $this->deleteOldProspectFile($post['old_file_name_prospect']);
+        }
+
+        return $save_in_bdd;
+      }
+
       
     } catch (Exception $e) {
       
@@ -114,6 +130,19 @@ class RepositorioProductsSQL extends repositorioProducts
       header("HTTP/1.1 500 Internal Server Error");
 
     }
+
+  }
+
+  public function deleteOldProspectFile($prospect) {
+    unlink( $_SERVER['DOCUMENT_ROOT'] . 'prospectos/' . $prospect );
+  }
+
+  public function saveNewProspectInBdd($product_id, $new_filename) {
+
+    $sql = "UPDATE products SET link = :link WHERE id = '$product_id' ";
+    $stmt = $this->conexion->prepare($sql);
+    $stmt->bindValue(":link", $new_filename, PDO::PARAM_STR);
+    return $stmt->execute();
 
   }
 
@@ -125,6 +154,16 @@ class RepositorioProductsSQL extends repositorioProducts
     $image_delete = $stmt->execute();
 
     return $image_delete;
+
+  }
+
+  public function delCurrentProspect($id)
+  {
+
+    $sql = "UPDATE products SET link = :link WHERE id = '$id' ";
+    $stmt = $this->conexion->prepare($sql);
+    $stmt->bindValue(":link", '', PDO::PARAM_STR);
+    return $stmt->execute();
 
   }
 
@@ -182,7 +221,7 @@ class RepositorioProductsSQL extends repositorioProducts
       $stmt->bindValue(":units_per_box", $post['units_per_box'], PDO::PARAM_STR);
       $stmt->bindValue(":pharmaceutical_form", $post['pharmaceutical_form'], PDO::PARAM_STR);
       $stmt->bindValue(":therapeutic_line", $post['therapeutic_line'], PDO::PARAM_STR);
-      $stmt->bindValue(":link", NULL, PDO::PARAM_STR);
+      $stmt->bindValue(":link", '', PDO::PARAM_STR);
       $stmt->bindValue(":language", $post['language'], PDO::PARAM_STR);
 
       return $stmt->execute();
