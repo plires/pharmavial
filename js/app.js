@@ -105,11 +105,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }, false);
   })();
 
-  // Hacer que se vea el nombre del archivo subido en el label del input file
-  document.querySelector('.custom-file-input').addEventListener('change',function(e){
-    let fileName = document.getElementById("customFile").files[0].name;
-    let nextSibling = e.target.nextElementSibling
-    nextSibling.innerText = fileName
-  })
-
 });

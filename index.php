@@ -31,7 +31,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Instituto Biológico Contemporáneo S.A. (IBC) es una Empresa de capitales argentinos dedicada exclusivamente a la elaboración de especialidades medicinales inyectables para la industria farmacéutica nacional e internacional Desde su fundación, en la Ciudad Autónoma de Buenos Aires en el año 1989, IBC ha desarrollado una política basada en el crecimiento y mejoramiento continuo.">
+    <meta name="description" content="Pharmavial - Instituto Biológico Contemporáneo S.A. (IBC) es una Empresa de capitales argentinos dedicada exclusivamente a la elaboración de especialidades medicinales inyectables para la industria farmacéutica nacional e internacional Desde su fundación, en la Ciudad Autónoma de Buenos Aires en el año 1989, IBC ha desarrollado una política basada en el crecimiento y mejoramiento continuo.">
     <meta name="author" content="Pablo Lires">
 
     <!-- Favicons -->
@@ -85,17 +85,19 @@
 
   	  		<div class="menu_bar">
             <img class="logo" src="img/header/header-logo-pharmavial.png" alt="logo pharmavial">
-  	  			<button class="transition" id="btn-menu-mobile" type="button"><i class="fas fa-bars"></i></button>
+  			    <button class="transition" id="btn-menu-mobile" type="button"><i class="fas fa-bars"></i></button>
   	  		</div>
 
           <nav class="transition">
-  	  			<img class="logo logo_desktop" src="img/header/header-logo-pharmavial.png" alt="logo pharmavial nav">
+            <a class="logo_desktop" href="./">
+  	  			  <img class="logo" src="img/header/header-logo-pharmavial.png" alt="logo pharmavial nav">
+            </a>
             <ul>
               <li class="nav-item">
-                <a class="link-item transition btn_to" href="#institucional"><i class="fas fa-dolly-flatbed mr-1"></i></i>PRODUCTOS</a>
+                <a class="link-item transition btn_to" href="#productos"><i class="fas fa-dolly-flatbed mr-1"></i></i>PRODUCTOS</a>
               </li>
               <li class="nav-item">
-                <a class="link-item transition btn_to" href="#servicios"><i class="fas fa-users"></i></i>SOBRE NOSOTROS</a>
+                <a class="link-item transition btn_to" href="#nosotros"><i class="fas fa-users"></i></i>SOBRE NOSOTROS</a>
               </li>
               <li class="nav-item">
                 <a class="link-item transition btn_to" href="#planta"><i class="fas fa-industry"></i>PLANTA</a>
@@ -115,7 +117,7 @@
                 <a class="transition active" href="./">Español</a>
                 <a class="transition" href="./en">Ingles</a>
               </div>
-              <a href="#" target="_blank" rel="noopener noreferrer" class="pharmavial_desktop">
+              <a href="http://www.laboratorioibc.com.ar/" target="_blank" rel="noopener noreferrer" class="pharmavial_desktop">
                 <img class="img-fluid transition" src="img/header/logo-ibc.png" alt="logo pharmavial">
               </a>
             </div>
@@ -194,8 +196,6 @@
 
       <!-- Faja Azul -->
       <div class="container-fluid section_blue">
-        <img data-wow-delay="0.3s" class="img-fluid figura_izq wow fadeInLeft" src="img/header/figura-a.png" alt="figura a">
-        <img data-wow-delay="0.6s" class="img-fluid figura_der wow fadeInRight" src="img/header/figura-b.png" alt="figura b">
         <div class="container">
           <div class="row">
             <div class="col-md-10 offset-md-1 wow fadeInUp">
@@ -208,14 +208,8 @@
       <!-- Faja Azul end -->
 
       <!-- Productos -->
-      <section id="servicios" class="productos">
+      <section id="productos" class="productos">
         
-        <div class="container-fluid">
-          <div class="row">
-            <div class="mark"></div>
-          </div>
-        </div>
-
         <div class="container">
           <div class="row">
             <div class="col-md-8 offset-md-2 text-center mb-4">
@@ -330,7 +324,7 @@
 
           <div v-else class="row">
             <div class="col-sm-6 col-md-4">
-              <p>No hay productos</p>
+              <p>No hay productos para mostrar</p>
             </div>
           </div>
 
@@ -355,9 +349,7 @@
       <!-- Productos end -->
 
       <!-- Nosotros -->
-      <section id="institucional" class="institucional">
-
-        <div class="mark"></div>
+      <section id="nosotros" class="institucional">
 
         <div class="container-fluid institucional_lg p-0">
 
@@ -587,69 +579,6 @@
       </section>
       <!-- Contacto end -->
 
-      <!-- Oportunidades Laborales -->
-      <section class="oportunidades_laborales">
-        <div class="container">
-          <div class="row">
-
-            <div class="col-md-6">
-              <h2>Mercado Internacional</h2>
-              <img class="img-fluid" src="img/oportunidades-laborales/laboratorio-ibc.jpg" alt="laboratorio ibc">
-              <p>
-                Laboratorio IBC ofrece sus servicios internacionalmente Para mayor información: <a class="transition" href="mailto:comex@laboratorioibc.com.ar">comex@laboratorioibc.com.ar</a>
-              </p>
-            </div>
-
-            <div class="col-md-6">
-              <h2>Oportunidades laborales</h2>
-              <p>
-                En IBC contamos con diversas oportunidades laborales para todas nuestras áreas. Adjunte su CV en formato Word o PDF con sus datos de contacto.
-              </p>
-
-              <?php 
-                require_once("php/sendForm.php");
-                require_once("php/sendFile.php");
-              ?>
-
-              <!-- Errores Envio CV -->
-              <?php if ($errorsCV): ?>
-                <div id="error" class="alert alert-danger alert-dismissible fade show fadeInLeft" role="alert">
-                  <strong>¡Por favor verificá los datos!</strong>
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  <ul style="padding: 0;">
-                    <?php foreach ($errorsCV as $errorCV) { ?>
-                      <li>- <?php echo $errorCV; ?></li>
-                    <?php } ?>
-                  </ul>
-                </div>
-              <?php endif ?>
-              <!-- Errores Envio CV end -->
-
-              <form id="cv" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
-                <input type="hidden" name="origin" value="Formulario Oportunidades Laborales">
-
-                <div class="form-group">
-                  <div class="custom-file">
-                    <input required type="file" lang="es" class="custom-file-input" name="cv" id="customFile">
-                    <label class="custom-file-label" for="customFile">Seleccionar Archivo</label>
-                    <small id="customFilelHelp" class="form-text text-muted">(máx: 2mb) (PDF, XLS, XLSX, DOC, DOCX, JPG, PNG & GIF).</small>
-                    <div class="invalid-feedback">
-                      Falta cargar un CV (máx: 2mb) (PDF, XLS, XLSX, DOC, DOCX, JPG, PNG & GIF).
-                    </div>
-                  </div>
-                </div>
-
-                <button type="submit" name="sendFile" class="btn btn-primary transition">Enviar</button>
-              </form>
-            </div>
-
-          </div>
-        </div>
-      </section>
-      <!-- Oportunidades Laborales end -->
-
       <!-- Footer -->
       <footer class="container-fluid">
         <div class="container">
@@ -721,6 +650,7 @@
   <script src="node_modules/wowjs/dist/wow.min.js"></script>
   <script src="node_modules/vue/dist/vue.js"></script>
   <script src="node_modules/axios/dist/axios.min.js"></script>
+  <script src="node_modules/jquery.easing/jquery.easing.min.js"></script>
   <script src="js/app-vue.js"></script>
   <script src="js/app.js"></script>
 </html>
