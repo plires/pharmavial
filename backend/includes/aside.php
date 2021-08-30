@@ -11,7 +11,7 @@ echo "
 <!-- Aside -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
+    <a target="_blank" rel="noopener noreferrer" href="<?= BASE ?>" class="brand-link">
       <img src="../img/backend/pharmavial-circular.png" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text text-center font-weight-light">Pharmavial</span>
     </a>
