@@ -28,6 +28,19 @@
       $email = $_POST['email'];
     }
 
+    // Verificamos si hay errores en el formulario
+    if (campoVacio($_POST['phone'])){
+
+      if ($_SESSION['lang'] === 'es') {
+        $errors['phone']='Ingresa tu teléfono';
+      } else {
+        $errors['phone']='Enter your phone';
+      }
+      
+    } else {
+      $phone = $_POST['phone'];
+    }
+
     if (campoVacio($_POST['comments'])){
 
       if ($_SESSION['lang'] === 'es') {

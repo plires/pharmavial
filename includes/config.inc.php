@@ -21,9 +21,11 @@ define('SMTP', 'localhost'); // Valor especial por GoDaddy
 define('EMAIL_SENDER', 'info@laboratorioibc.com.ar');
 define('EMAIL_SENDER_SHOW', 'info@laboratorioibc.com.ar');
 define('NAME_SENDER_SHOW', 'Instituto Biológico Contemporaneo');
-define('EMAIL_RECIPIENT', 'info@laboratorioibc.com.ar');
+// define('EMAIL_RECIPIENT', 'info@laboratorioibc.com.ar');
+define('EMAIL_RECIPIENT', 'carlos.castro.1975.2@gmail.com');
 define('EMAIL_BCC', '');
 define('EMAIL_PORT', 25);
+
 define('EMAIL_NAME', 'Instituto Biológico Contemporaneo');
 define('EMAIL_SUBJECT', 'Gracias por tu contacto');
 define('EMAIL_CHARSET', 'utf-8');

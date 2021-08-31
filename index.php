@@ -1,20 +1,19 @@
 <?php 
   
   require __DIR__ . '/vendor/autoload.php';
+  include_once __DIR__ . '/includes/config.inc.php';
   include_once __DIR__ . '/includes/funciones_validar.php';
   include_once __DIR__ . '/clases/app.php';
   
   session_start();
 
   $errors = [];
-  $errorsCV = [];
   $name = '';
   $company = '';
   $phone = '';
   $email = '';
   $comments = '';
   $origin = 'Consulta desde Formulario Web-ES';
-  $originFile = 'CV Enviado desde el formulario Web-ES';
   $_SESSION['lang'] = 'es';
 
   echo "
@@ -22,6 +21,8 @@
     var lang = 'es';
   </script>
   ";
+
+  require_once("php/sendForm.php");
 
 ?>
 
@@ -49,7 +50,7 @@
     <!-- Custom -->
     <link rel="stylesheet" href="css/app.css">
 
-    <title>Instituto Biológico Contemporaneo</title>
+    <title>Pharmavial - Instituto Biológico Contemporaneo</title>
   </head>
 
   <body>
@@ -97,7 +98,7 @@
                 <a class="link-item transition btn_to" href="#productos"><i class="fas fa-dolly-flatbed mr-1"></i></i>PRODUCTOS</a>
               </li>
               <li class="nav-item">
-                <a class="link-item transition btn_to" href="#nosotros"><i class="fas fa-users"></i></i>SOBRE NOSOTROS</a>
+                <a class="link-item transition btn_to" href="#institucional"><i class="fas fa-users"></i></i>SOBRE NOSOTROS</a>
               </li>
               <li class="nav-item">
                 <a class="link-item transition btn_to" href="#planta"><i class="fas fa-industry"></i>PLANTA</a>
@@ -106,7 +107,7 @@
                 <a class="link-item transition btn_to" href="#contacto"><i class="fas fa-envelope"></i>CONTACTO</a>
               </li>
               <li class="nav-item">
-                <a href="#" target="_blank" rel="noopener noreferrer" class="pharmavial_mobile">
+                <a href="http://www.laboratorioibc.com.ar/" target="_blank" rel="noopener noreferrer" class="pharmavial_mobile">
                   <img class="img-fluid transition" src="img/header/logo-ibc-mobile.png" alt="logo ibc">
                 </a>
               </li>
@@ -476,8 +477,6 @@
       <!-- Contacto -->
       <section id="contacto" class="contacto wow fadeInLeft">
 
-        <div class="mark"></div>
-
         <div class="container">
 
           <div class="row">
@@ -508,9 +507,9 @@
                   <input type="hidden" name="origin" value="<?= $origin ?>">
 
                   <div class="form-group">
-                    <select class="custom-select">
-                      <option disabled selected>Dirigido a:</option>
-                      <option value="rrhh@laboratorioibc.com.ar">RRHH</option>
+                    <select required class="custom-select">
+                      <option disabled>Dirigido a:</option>
+                      <option selected value="rrhh@laboratorioibc.com.ar">RRHH</option>
                       <option value="compras@laboratorioibc.com.ar">Compras</option>
                       <option value="comex@laboratorioibc.com.ar">Ventas</option>
                       <option value="farmacovigilancia@laboratorioibc.com.ar">Farmacovigilancia</option>
@@ -525,7 +524,7 @@
                   </div>
 
                   <div class="form-group">
-                    <input required type="text" class="form-control transition" name="company" value="<?= $company ?>" placeholder="Empresa">
+                    <input type="text" class="form-control transition" name="company" value="<?= $company ?>" placeholder="Empresa">
                     <div class="invalid-feedback">
                       Ingrese el nombre de la empresa.
                     </div>
