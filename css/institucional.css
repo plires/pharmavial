@@ -1,5 +1,5 @@
 /* Institucional */
-.institucional { margin-bottom: 60px; position: relative; }
+.institucional { position: relative; }
 .institucional_lg { 
 	background: var(--primary-color);
 	background-image: url('../img/institucional/back-inst.jpg');
@@ -23,12 +23,12 @@
 	overflow: hidden;
 }
 .institucional .slide { margin-bottom: 30px; }
-.institucional .planta_produccion { margin-bottom: 60px; }
-.institucional .planta_produccion h2 { color: var(--primary-color); text-align: center; margin-bottom: 20px; margin-top: 0; }
-.institucional .planta_produccion h4 { font-weight: 700; text-align: center; margin-bottom: 20px; }
-.institucional .planta_produccion p { text-align: center; color: var(--dark-text); margin-bottom: 45px; }
-.institucional .capacidad_anual span { margin-bottom: 3px; font-weight: 500; }
-.institucional .capacidad_anual {
+.planta_produccion { margin-bottom: 60px; }
+.planta_produccion h2 { text-align: center; margin-bottom: 20px; }
+.planta_produccion h4 { font-weight: 700; text-align: center; margin-bottom: 20px; }
+.planta_produccion p { text-align: center; color: var(--dark-text); margin-bottom: 45px; }
+.capacidad_anual span { margin-bottom: 3px; font-weight: 500; }
+.capacidad_anual {
 	display: flex;
 	justify-content: space-between;
 	font-size: 0.85rem;

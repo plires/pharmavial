@@ -348,35 +348,34 @@
       </section>
       <!-- Productos end -->
 
-      <!-- Nosotros -->
-      <section id="nosotros" class="institucional">
+      <!-- Institucional -->
+      <section id="institucional" class="institucional">
 
         <div class="container-fluid institucional_lg p-0">
 
           <div class="container">
 
-            <div class="row h-100">
+            <div class="row">
 
               <div class="col-md-12">
                 <h2 class="wow fadeInUp">Sobre nosotros</h2>
                 <div id="general" class="transition content-inst-lg wow fadeInUp show">
-
                   <p>
-                    Instituto Biológico Contemporáneo S.A. (IBC) es una Empresa de capitales argentinos dedicada exclusivamente a la elaboración de especialidades medicinales inyectables para la industria farmacéutica nacional e internacional Desde su fundación, en la Ciudad Autónoma de Buenos Aires en el año 1989, IBC ha desarrollado una política basada en el crecimiento y mejoramiento continuo.
+                    Instituto Biológico Contemporáneo S.A. (IBC) es una Empresa de capitales argentinos dedicada exclusivamente a la elaboración de especialidades medicinales inyectables para la industria farmacéutica nacional e internacional
+                    Desde su fundación, en la Ciudad Autónoma de Buenos Aires en el año 1989, IBC ha desarrollado una política basada en el crecimiento y mejoramiento continuo. 
                   </p>
-
                   <p>
-                    La actual Planta Farmacéutica esta situada en el Partido de Ituzaingo, provincia de Buenos Aires. Cuenta con una superficie de 12.650 m2 de los cuales 7.500 m2 son cubiertos. Nuestras plantas farmacéuticas están equipadas con tecnología de última generación. Una de ellas sobre 2.900 m2 cubiertos dedicada a la producción de productos liofilizados y soluciones inyectables en ampollas y frasco ampolla de activos generales y la otra planta segregada sobre 2.000 m2 para la producción exclusiva de productos inyectables bajo la forma de polvos estériles beta-lactámicos.
+                    La actual Planta Farmacéutica esta situada en el Partido de Ituzaingo, provincia de Buenos Aires. Cuenta con una superficie de 12.650 m2  de los cuales 7.500 m2 son cubiertos. 
+                    Nuestras plantas farmacéuticas están equipadas con tecnología de última generación. Una de ellas sobre 2.900 m2 cubiertos dedicada a la producción de productos liofilizados y soluciones inyectables en ampollas y frasco ampolla de activos generales y la otra planta segregada sobre 2.000 m2 para la producción exclusiva de productos inyectables bajo la forma de polvos estériles beta-lactámicos.
                   </p>
-
                   <p>
                     En el edificio central de 1.400 m2 cubiertos además de la planta productiva de activos generales, se encuentran las oficinas del Directorio, y las Gerencias Administrativa, Planificación, RRHH, Asuntos Regulatorios, Calidad y Dirección Técnica. Físicamente separadas con una superficie de 1.500 m2 cubiertos se ubican el almacén de materias primas y productos terminados e insumos generales y las áreas de revisado y acondicionamientos.
                   </p>
-
                   <p>
-                    En un edificio separado de 2.000 m2 cubiertos se encuentra la planta de fabricación de productos antibióticos y en el primer piso con una neta separación de la planta de antibióticos con una superficie de 440 m2 cubiertos se ubican el Departamento de Control de Calidad y Microbiológica y el Departamento Galénico y Desarrollo Analítico. IBC ha tenido desde sus comienzos la constante vocación por brindar excelencia en calidad en todos sus servicios farmacéuticos. IBC cuenta con un plantel de profesionales altamente capacitados, además de contar con maquinarias, instalaciones e instrumental necesario que le permiten desarrollar su actividad bajo estrictas normas de GMP (Buenas Prácticas de Manufactura) y GLP (Buenas Prácticas de Laboratorios) , que rigen nuestra actividad farmacéutica. Para ello IBC, desde el año 1997 ha desarrollado un Plan de Inversiones en equipamiento e instalaciones que le han permitido optimizar respuestas para su mercado en países de Latinoamérica y Asia contando en la actualidad con certificaciones a nivel local, ANMAT, e internacionales como MERCOSUR e INVIMA (Colombia).
+                    En un edificio separado de 2.000 m2 cubiertos se encuentra la planta de fabricación de productos antibióticos y en el primer piso con una neta separación de la planta de antibióticos con una superficie de 440 m2 cubiertos se ubican  el Departamento de Control de Calidad y Microbiológica y el Departamento Galénico y Desarrollo Analítico. 
+                    IBC ha tenido desde sus comienzos la constante vocación por brindar  excelencia en calidad en todos sus servicios farmacéuticos.
+                    IBC cuenta con un plantel de profesionales altamente capacitados, además de contar con maquinarias, instalaciones e instrumental necesario que le permiten desarrollar su actividad bajo estrictas normas de GMP (Buenas Prácticas de Manufactura) y GLP (Buenas Prácticas de Laboratorios) , que rigen  nuestra actividad farmacéutica. Para ello IBC, desde el año 1997 ha desarrollado un Plan de Inversiones en equipamiento e instalaciones que le han permitido optimizar respuestas para su mercado en países de Latinoamérica y Asia contando en la actualidad con certificaciones a nivel local, ANMAT, e internacionales como MERCOSUR e INVIMA (Colombia).
                   </p>
-
                 </div>
 
               </div>
@@ -385,30 +384,22 @@
 
           </div>
 
-          <div id="carouselInstitucional" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="img/institucional/slide-1.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="img/institucional/slide-1.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="img/institucional/slide-1.jpg" class="d-block w-100" alt="...">
-              </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselInstitucional" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselInstitucional" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-
         </div>
+      </section>
+      <!-- Institucional end -->
 
+      <!-- Imagen -->
+      <section class="container-fluid p-0 mb-5">
+        <div class="row">
+          <div class="col-md-12">
+            <img class="img-fluid" src="img/institucional/slide-1.jpg" alt="slide institucional">
+          </div>
+        </div>
+      </section>
+      <!-- Imagen end --> 
+
+      <!-- Planta -->
+      <section>
         <div class="container">
           <div id="planta" class="row planta_produccion">
             <div class="col-md-12">
@@ -441,10 +432,9 @@
             </div>
           </div>
         </div>
-
       </section>
-      <!-- Nosotros end -->
-
+      <!-- Planta end -->      
+      
       <!-- Farmacovigilancia -->
       <section id="farmacovigilancia" class="farmacovigilancia  wow fadeInUp">
 
