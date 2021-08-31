@@ -128,7 +128,7 @@ $productos = $db->getRepositorioProducts()->getProducts();
                           id="product_id" 
                           class="custom-select">
 
-                          <option value="0" selected>Seleccione producto para editar imágenes</option>
+                          <option value="0" selected>Seleccione producto para editar el prospecto</option>
                           
                           <option 
                             v-for="(product, index) in productsByLang" 

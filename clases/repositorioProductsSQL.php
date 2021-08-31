@@ -149,12 +149,28 @@ class RepositorioProductsSQL extends repositorioProducts
   public function deleteImage($id)
   {
 
+    $name_image = $this->getNameImage($id);
+
     $sql = "DELETE FROM images WHERE id='$id'";
     $stmt = $this->conexion->prepare($sql);
-    $image_delete = $stmt->execute();
+    $stmt->execute();
+    $image_deleted_from_bdd = $stmt->rowCount();
 
-    return $image_delete;
+    //Borrar fisicamente la imagen del servidor
+    if ( $image_deleted_from_bdd ) {
+      unlink( $_SERVER['DOCUMENT_ROOT'] . 'img/productos/' . $name_image );
+    }
 
+    return $image_deleted_from_bdd;
+
+  }
+
+  public function getNameImage($id) {
+    $sql = "SELECT * FROM images WHERE id = '$id'";
+    $stmt = $this->conexion->prepare($sql);
+    $stmt->execute();
+    $image_to_delete_from_server = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $image_to_delete_from_server['url'];
   }
 
   public function delCurrentProspect($id)
