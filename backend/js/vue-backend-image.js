@@ -168,7 +168,7 @@ let app = new Vue({
                   'success'
                 )
 
-                app.imagesByProduct.splice(app.imagesByProduct.indexOf(index), 1)
+                app.imagesByProduct = app.imagesByProduct.filter( (product) => product.id != image_id )
                 app.getImages()
 
               } else {
