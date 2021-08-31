@@ -35,7 +35,7 @@ let app = new Vue({
 
       let file = this.$refs.myFile.files[0];
 
-      if ( file && file.type == 'application/pdf' && file.size <= 5242880 ) {
+      if ( file && file.type == 'application/pdf' && file.size <= 20971520 ) {
         return true
       } 
 
@@ -46,11 +46,11 @@ let app = new Vue({
       }
 
       if (file.type !== 'application/pdf') {
-        this.errors.push('Solo se permiten archivos de tipo PDF')
+        this.errors.push('Solo se permiten archivos de tipo PDF y un máximo de 20 Mb.')
       }
 
-      if (file.size > 5242880) {
-        this.errors.push('Máximo 5 mb.')
+      if (file.size > 20971520) {
+        this.errors.push('Máximo 20 mb.')
       }
 
       return false
@@ -89,7 +89,7 @@ let app = new Vue({
 
           } else {
             app.errors = []
-            app.errors.push('El archivo es requerido. Sólo se permiten archivos PDF y menores a 5 mb.')
+            app.errors.push('El archivo es requerido. Sólo se permiten archivos PDF y menores a 20 mb.')
           }
 
         })

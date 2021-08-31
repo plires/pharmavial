@@ -6,7 +6,7 @@
 	if ( 
 			empty($_FILES) || 
 			$_FILES['uploadProspect']['type'] != 'application/pdf' || 
-			$_FILES['uploadProspect']['size'] > 5242880 || 
+			$_FILES['uploadProspect']['size'] > 20971520 || 
 			empty($_POST)	
 		) {
 		header('Content-type: application/json');
