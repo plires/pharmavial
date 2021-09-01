@@ -2,9 +2,9 @@
 
 session_start();
 
-if (!$_SESSION) {
-session_destroy();
-header('Location: ./');
+if ( !isset($_SESSION['user']) ) {
+  session_destroy();
+  header('Location: ./');
 }
 
 require __DIR__ . '/../includes/soporte.php';

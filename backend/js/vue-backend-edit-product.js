@@ -2,7 +2,6 @@ let app = new Vue({
   el: '#app',
   data: function() {
     return {
-      base: 'http://pharmavial.test',
       products: [],
       imagesByProduct: [],
       images: [],
@@ -23,13 +22,13 @@ let app = new Vue({
   methods: {
     
     async getProducts() {
-      let response = await axios.get(this.base + '/backend/php/get_products.php')
+      let response = await axios.get('/backend/php/get_products.php')
       this.products = response.data
       this.productsByLang = this.products
     },
 
     async getImages() {
-      let response = await axios.get(this.base + '/backend/php/get_images.php')
+      let response = await axios.get('/backend/php/get_images.php')
       this.images = response.data
     },
 
@@ -83,7 +82,7 @@ let app = new Vue({
         formData.append("image", imagefile.files[0])
         formData.append("product_id", this.selected)
 
-        axios.post(this.base + '/backend/php/upload_image.php', formData, {
+        axios.post('/backend/php/upload_image.php', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -141,7 +140,7 @@ let app = new Vue({
         if (result.isConfirmed) {
           
           $.ajax({
-            url: this.base + '/backend/php/delete_image.php',
+            url: '/backend/php/delete_image.php',
             data: {
               'id': image_id
             },
@@ -196,7 +195,7 @@ let app = new Vue({
         if (result.isConfirmed) {
           
           $.ajax({
-            url: this.base + '/backend/php/delete_product.php',
+            url: '/backend/php/delete_product.php',
             data: {
               'id': product_id
             },

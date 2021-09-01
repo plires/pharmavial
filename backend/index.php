@@ -1,11 +1,5 @@
 <?php
 
-session_start();
-
-if ($_SESSION) {
-  header('Location: productos.php');
-}
-
 require __DIR__ . '/../includes/soporte.php';
 require __DIR__ . '/../includes/funciones_validar.php';
 
