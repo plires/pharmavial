@@ -98,7 +98,7 @@ $productos = $db->getRepositorioProducts()->getProducts();
                   </div>
                   
                   <!-- form start -->
-                  <form id="form_product" method="post" class="needs-validation" novalidate>
+                  <form id="form_product" method="post">
 
                     <div class="card-body">
 
