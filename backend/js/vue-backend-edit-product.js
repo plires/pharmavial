@@ -2,6 +2,13 @@ let app = new Vue({
   el: '#app',
   data: function() {
     return {
+      name: '',
+      activePrinciple: '',
+      presentation: '',
+      unitsPerBox: '',
+      pharmaceuticalForm: '',
+      therapeuticLine: '',
+      language: 'Seleccione Idioma del producto',
       products: [],
       imagesByProduct: [],
       images: [],
@@ -50,7 +57,7 @@ let app = new Vue({
         return true
       } 
 
-      this.errors = []
+      app.cleanErrors()
 
       if (!file) {
         this.errors.push('Suba una imágen.')
@@ -216,7 +223,7 @@ let app = new Vue({
 
                 app.getProducts()
 
-                resetInputs()
+                app.resetInputs()
 
               } else {
 
@@ -237,7 +244,102 @@ let app = new Vue({
 
     },
 
+    checkFormProduct() {
+
+      app.cleanErrors()
+
+      if ( 
+        this.name && 
+        this.activePrinciple && 
+        this.presentation && 
+        this.unitsPerBox && 
+        this.pharmaceuticalForm && 
+        this.therapeuticLine &&
+        this.language && this.language != 'Seleccione Idioma del producto'
+        ) {
+        return true
+      } else {
+        this.errors.push('Todos los campos son obligatorios')
+      }
+
+      if (this.language == 'Seleccione Idioma del producto') {
+        this.errors.push('Seleccione un idioma para el producto')
+      } 
+
+    },
+
+    editProduct() {
+
+      let checked = this.checkFormProduct()
+
+      if (checked) { 
+
+        loader()
+        
+        const form = document.querySelector('#form_product')
+        var formData = new FormData(form);
+
+        formData.append("id_product", this.selected)
+        formData.append("name", this.name)
+        formData.append("active_principle", this.activePrinciple)
+        formData.append("presentation", this.presentation)
+        formData.append("units_per_box", this.unitsPerBox)
+        formData.append("pharmaceutical_form", this.pharmaceuticalForm)
+        formData.append("therapeutic_line", this.therapeuticLine)
+        formData.append("language", this.language)
+
+        axios.post('/backend/php/save_product.php', formData)
+        .then(response => {
+
+          if (response.data) {
+
+            app.errors = []
+            Swal.fire(
+              'Éxito!',
+              'El producto se editó satisfactoriamente.',
+              'success'
+            )
+
+            app.getProducts()
+
+          } else {
+            app.errors = []
+            app.errors.push('Todos los campos son obligatorios.')
+          }
+
+        })
+        .catch(errors => {
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ocurrió un error en el servidor... intente mas tarde por favor!',
+          })
+          
+        })
+
+        $('#loader').fadeOut(500);
+
+      }
+
+    },
+
+    resetInputs(){
+      this.name = ''
+      this.activePrinciple = ''
+      this.presentation = ''
+      this.unitsPerBox = ''
+      this.pharmaceuticalForm = ''
+      this.therapeuticLine = ''
+      this.language = 'Seleccione Idioma del producto'
+    },
+
+    cleanErrors() {
+      this.errors = []
+    },
+
   },
+
   computed: {
     
     //

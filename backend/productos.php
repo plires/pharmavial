@@ -100,8 +100,6 @@ $productos = $db->getRepositorioProducts()->getProducts();
                   <!-- form start -->
                   <form id="form_product" method="post" class="needs-validation" novalidate>
 
-                    <input type="hidden" id="id_product" name="id_product">
-                    
                     <div class="card-body">
 
                       <div class="form-group text-right">
@@ -115,9 +113,19 @@ $productos = $db->getRepositorioProducts()->getProducts();
                         </div>
                       </div>
 
+                      <div v-if="errors.length > 0" class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Por favor corregí la siguiente <strong>información</strong>
+                        <button @click="cleanErrors()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <ul>
+                          <li v-for="error in errors" v-cloak>{{ error }}</li>
+                        </ul>
+                      </div>
+
                       <div class="form-group">
                         <label>Seleccionar Producto</label>
-                        <select required v-model="selected" id="product_id" name="name" class="custom-select">
+                        <select required v-model="selected" id="product_id" class="custom-select">
 
                           <option value="0" selected>Seleccione producto para cambiar los valores</option>
                           
@@ -128,10 +136,6 @@ $productos = $db->getRepositorioProducts()->getProducts();
 
                         </select>
 
-                        <div class="invalid-feedback">
-                          Seleccione un producto
-                        </div>
-
                       </div>
 
                       <div v-bind:class="selected != 0 ? '' : 'd-none'">
@@ -139,69 +143,52 @@ $productos = $db->getRepositorioProducts()->getProducts();
                         <div class="form-row">
                           <div class="form-group col-md-6">
                             <label for="name">Nombre del Producto</label>
-                            <input class="form-control" required type="text" id="name" name="name" placeholder="Nombre del Producto">
-                            <div class="invalid-feedback">
-                              Ingrese el nombre del producto
-                            </div>
+                            <input class="form-control" required type="text" id="name" v-model="name" placeholder="Nombre del Producto">
                           </div>
 
                           <div class="form-group col-md-6">
                             <label for="active_principle">Principio Activo</label>
-                            <input required type="text" class="form-control" id="active_principle" name="active_principle" placeholder="Principio Activo">
-                            <div class="invalid-feedback">
-                              Ingrese el principio activo
-                            </div>
+                            <input required type="text" class="form-control" id="active_principle" v-model="activePrinciple" placeholder="Principio Activo">
                           </div>
                         </div>
 
                         <div class="form-row">
                           <div class="form-group col-md-6">
                             <label for="presentation">Presentación</label>
-                            <input required type="text" class="form-control" id="presentation" name="presentation" placeholder="Presentación">
-                            <div class="invalid-feedback">
-                              Ingrese la presentación
-                            </div>
+                            <input required type="text" class="form-control" id="presentation" v-model="presentation" placeholder="Presentación">
                           </div>
 
                           <div class="form-group col-md-6">
                             <label for="units_per_box">Unidades por Caja</label>
-                            <input required type="text" class="form-control" id="units_per_box" name="units_per_box" placeholder="Unidades por Caja">
-                            <div class="invalid-feedback">
-                              Ingrese las unidades por caja
-                            </div>
+                            <input required type="text" class="form-control" id="units_per_box" v-model="unitsPerBox" placeholder="Unidades por Caja">
                           </div>
                         </div>
 
                         <div class="form-row">
                           <div class="form-group col-md-6">
                             <label for="pharmaceutical_form">Forma Farmacéutica</label>
-                            <input required type="text" class="form-control" id="pharmaceutical_form" name="pharmaceutical_form" placeholder="Forma Farmacéutica">
-                            <div class="invalid-feedback">
-                              Ingrese la forma farmacéutica
-                            </div>
+                            <input required type="text" class="form-control" id="pharmaceutical_form" v-model="pharmaceuticalForm" placeholder="Forma Farmacéutica">
                           </div>
 
                           <div class="form-group col-md-6">
                             <label for="therapeutic_line">Línea Terapéutica</label>
-                            <input required type="text" class="form-control" id="therapeutic_line" name="therapeutic_line" placeholder="Línea Terapéutica">
-                            <div class="invalid-feedback">
-                              Ingrese la línea terapéutica
-                            </div>
+                            <input required type="text" class="form-control" id="therapeutic_line" v-model="therapeuticLine" placeholder="Línea Terapéutica">
                           </div>
                         </div>
 
                         <div class="form-row">
                           <div class="form-group col-md-6">
-                            <label for="language">Idioma (es = Español | en = Ingles)</label>
-                            <input required type="text" class="form-control" id="language" name="language" placeholder="Idioma">
-                            <div class="invalid-feedback">
-                              Ingrese el idioma para visualizar en el sitio
-                            </div>
+                            <label for="language">Idioma</label>
+                            <select required class="custom-select mb-3" id="language" v-model="language">
+                              <option selected>Seleccione Idioma del producto</option>
+                              <option value="es">Español</option>
+                              <option value="en">Ingles</option>
+                            </select>
                           </div>
                         </div>
 
                         <div class="card-footer">
-                          <button type="submit" class="btn btn-primary">Guardar</button>
+                          <button @click.prevent="editProduct()" class="btn btn-primary">Guardar</button>
                           <button @click.prevent="deleteProduct(selected)" class="btn btn-danger">Eiminar</button>
                         </div>
 

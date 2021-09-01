@@ -36,14 +36,14 @@ function(){
       if (result) {
         let product = JSON.parse(result)
 
-        idProduct.value = product.id
-        name.value = product.name
-        activePrinciple.value = product.active_principle
-        presentation.value = product.presentation
-        unitsPerBox.value = product.units_per_box
-        pharmaceuticalForm.value = product.pharmaceutical_form
-        therapeuticLine.value = product.therapeutic_line
-        language.value = product.language
+        app.selected = product.id
+        app.name = product.name
+        app.activePrinciple = product.active_principle
+        app.presentation = product.presentation
+        app.unitsPerBox = product.units_per_box
+        app.pharmaceuticalForm = product.pharmaceutical_form
+        app.therapeuticLine = product.therapeutic_line
+        app.language = product.language
       }
 
   }});
