@@ -96,8 +96,8 @@ class RepositorioUsersSQL extends repositorioUsers
       $to = $user['email'];
       $subject = "Reset de contraseña";
       $message = "Tu nueva contraseña es: " . $new_pass;
-      $headers = 'From: info@jokerhotel.com.ar' . "\r\n" .
-      'Reply-To: info@jokerhotel.com.ar' . "\r\n" .
+      $headers = 'From: info@pharmavial.com.ar' . "\r\n" .
+      'Reply-To: info@pharmavial.com.ar' . "\r\n" .
       'X-Mailer: PHP/' . phpversion();
        
       $send_email = mail($to, $subject, $message, $headers);

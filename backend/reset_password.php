@@ -45,8 +45,6 @@ if (isset($_POST['send_pass'])) {
 <!doctype html>
 <html class="h-100" lang="es">
   <head>
-    <!-- Tag Manager Head -->
-    <?php include_once("../includes/tag_manager_head.php"); ?>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -60,10 +58,10 @@ if (isset($_POST['send_pass'])) {
     <title>Pharmavial - Laboratorio IBC | Reseteo de Contraseña</title>
 
     <!-- Normalize CSS -->
-    <link rel="stylesheet" href="../css/normalize.min.css">
+    <link rel="stylesheet" href="../node_modules/normalize.css/normalize.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -80,12 +78,9 @@ if (isset($_POST['send_pass'])) {
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="css/app.css">
 
-    <title>Hotel Alojamiento Jonde. Reset Pass</title>
+    <title>Pharmavial - Reset Pass</title>
   </head>
   <body class="hold-transition sidebar-mini h-100">
-    <!-- Tag Manager Body -->
-    <?php include_once("../includes/tag_manager_body.php"); ?>
-
 
     <div class="backend_login content-header h-100">
       <!-- Main content -->

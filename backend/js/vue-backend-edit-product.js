@@ -2,6 +2,7 @@ let app = new Vue({
   el: '#app',
   data: function() {
     return {
+      base: 'http://pharmavial.test',
       products: [],
       imagesByProduct: [],
       images: [],
@@ -22,13 +23,13 @@ let app = new Vue({
   methods: {
     
     async getProducts() {
-      let response = await axios.get('php/get_products.php')
+      let response = await axios.get(this.base + '/backend/php/get_products.php')
       this.products = response.data
       this.productsByLang = this.products
     },
 
     async getImages() {
-      let response = await axios.get('php/get_images.php')
+      let response = await axios.get(this.base + '/backend/php/get_images.php')
       this.images = response.data
     },
 
@@ -82,7 +83,7 @@ let app = new Vue({
         formData.append("image", imagefile.files[0])
         formData.append("product_id", this.selected)
 
-        axios.post('php/upload_image.php', formData, {
+        axios.post(this.base + '/backend/php/upload_image.php', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -97,17 +98,8 @@ let app = new Vue({
               'success'
             )
 
-            // async function foo() {
-            //   let res = await axios.get('php/get_images.php')
-            //   this.images = await res.data
-            //   var newImage = await app.images.filter( (image) => image.id == response.data.image_add ) 
-            //   await app.imagesByProduct.push(newImage[0])
-            // }
-
-            // foo()
-
             app.getImages()
-            // VER COMO HACER PARA QUE SE ACTUALICE Y SE MUESTRE LA IMAGEN RECIEN SUBIDA (se deberia buscar con promesas o async await en vez de settimeout) 
+
             setTimeout(function(){ 
 
               var newImage = app.images.filter( (image) => image.id == response.data.image_add ) 
@@ -149,7 +141,7 @@ let app = new Vue({
         if (result.isConfirmed) {
           
           $.ajax({
-            url: 'php/delete_image.php',
+            url: this.base + '/backend/php/delete_image.php',
             data: {
               'id': image_id
             },

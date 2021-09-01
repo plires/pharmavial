@@ -2,6 +2,7 @@ let app = new Vue({
   el: '#app',
   data: function() {
     return {
+      base: 'http://pharmavial.test',
       products: [],
       productsByLang: [],
       product_id: '',
@@ -20,7 +21,7 @@ let app = new Vue({
   methods: {
     
     async getProducts() {
-      let response = await axios.get('php/get_products.php')
+      let response = await axios.get(this.base + '/backend/php/get_products.php')
       this.products = response.data
       this.productsByLang = this.products
     },
@@ -69,7 +70,7 @@ let app = new Vue({
         formData.append("product_id", this.selected)
         formData.append("old_file_name_prospect", this.prospect)
 
-        axios.post('php/save_prospect.php', formData, {
+        axios.post(this.base + '/backend/php/save_prospect.php', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -125,7 +126,7 @@ let app = new Vue({
 
           formData.append("id", product_id)
 
-          axios.post('php/delete_current_prospect.php', formData)
+          axios.post(this.base + '/backend/php/delete_current_prospect.php', formData)
           .then(response => {
 
             if (response.data) {

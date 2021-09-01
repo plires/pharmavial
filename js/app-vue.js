@@ -2,6 +2,7 @@ let app = new Vue({
   el: '#app',
   data: function() {
     return {
+      base: 'http://pharmavial.test',
       products: [],
       selectActivePrinciple: '',
       selectTherapeuticAction: '',
@@ -34,7 +35,7 @@ let app = new Vue({
 
     async getProducts() {
       this.loading()
-      let response = await axios.get('/php/getProducts.php')
+      let response = await axios.get(this.base + '/php/getProducts.php')
 
       this.fillSelects(response.data)
 
@@ -45,7 +46,7 @@ let app = new Vue({
 
     async getImages() {
       this.loading()
-      let response = await axios.get('/php/getImages.php')
+      let response = await axios.get(this.base + '/php/getImages.php')
       this.images = response.data
       this.loading()
     },

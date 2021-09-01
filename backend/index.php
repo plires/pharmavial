@@ -54,7 +54,7 @@ if (isset($_POST['send_login'])) {
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Login. Hotel alojamiento Jonde. Suites de calidad y con precios inmejorables. Conocenos!">
+    <meta name="description" content="Login - Pharmavial">
     <meta name="author" content="Pablo Lires">
 
     <!-- Favicons -->
@@ -83,7 +83,7 @@ if (isset($_POST['send_login'])) {
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="css/app.css">
 
-    <title>Hotel Alojamiento Jonde. Login</title>
+    <title>Login Pharmavial</title>
   </head>
   <body class="hold-transition sidebar-mini h-100">
 
