@@ -202,6 +202,7 @@ $productos = $db->getRepositorioProducts()->getProducts();
 
                         <div class="card-footer">
                           <button type="submit" class="btn btn-primary">Guardar</button>
+                          <button @click.prevent="deleteProduct(selected)" class="btn btn-danger">Eiminar</button>
                         </div>
 
                       </div>
@@ -250,6 +251,9 @@ $productos = $db->getRepositorioProducts()->getProducts();
 
     <!-- Backend -->
     <script src="js/backend.js"></script>
+
+    <!-- Alerts -->
+    <script src="./../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
     <!-- VUE Backend -->
     <script src="js/vue-backend-edit-product.js"></script>

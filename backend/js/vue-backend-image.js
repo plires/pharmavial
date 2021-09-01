@@ -98,17 +98,8 @@ let app = new Vue({
               'success'
             )
 
-            // async function foo() {
-            //   let res = await axios.get(this.base + '/backend/php/get_images.php')
-            //   this.images = await res.data
-            //   var newImage = await app.images.filter( (image) => image.id == response.data.image_add ) 
-            //   await app.imagesByProduct.push(newImage[0])
-            // }
-
-            // foo()
-
             app.getImages()
-            // VER COMO HACER PARA QUE SE ACTUALICE Y SE MUESTRE LA IMAGEN RECIEN SUBIDA (se deberia buscar con promesas o async await en vez de settimeout) 
+            
             setTimeout(function(){ 
 
               var newImage = app.images.filter( (image) => image.id == response.data.image_add ) 

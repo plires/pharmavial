@@ -155,7 +155,7 @@ $productos = $db->getRepositorioProducts()->getProducts();
                       </div>
 
                       <div v-if="selected != 0" class="form-group">
-                        <label for="uploadProspect">Cargar / Cambiar Prospecto actual (Sólo PDF - Máx 5mb.)</label>
+                        <label for="uploadProspect">Cargar / Cambiar Prospecto actual (Sólo PDF - Máx 20mb.)</label>
                         <div class="input-group">
                           <div class="custom-file">
                             <input 

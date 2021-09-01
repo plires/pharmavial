@@ -165,6 +165,18 @@ class RepositorioProductsSQL extends repositorioProducts
 
   }
 
+  public function deleteProduct($id)
+  {
+
+    $sql = "DELETE FROM products WHERE id='$id'";
+    $stmt = $this->conexion->prepare($sql);
+    $stmt->execute();
+    $product_deleted = $stmt->rowCount();
+
+    return $product_deleted;
+
+  }
+
   public function getNameImage($id) {
     $sql = "SELECT * FROM images WHERE id = '$id'";
     $stmt = $this->conexion->prepare($sql);
@@ -284,7 +296,7 @@ class RepositorioProductsSQL extends repositorioProducts
   function optimizeImage($filename, $location) {
     
     // Optimizar imagen
-    $manager = new ImageManager(array('driver' => 'imagick'));
+    $manager = new ImageManager(array('driver' => 'gd'));
 
     $image = $manager->make($location)
       ->resize(600, 400)

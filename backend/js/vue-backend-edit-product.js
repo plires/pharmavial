@@ -182,6 +182,62 @@ let app = new Vue({
 
     },
 
+    deleteProduct(product_id) {
+
+      Swal.fire({
+        title: 'Esta seguro?',
+        text: "No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, eliminar!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          
+          $.ajax({
+            url: this.base + '/backend/php/delete_product.php',
+            data: {
+              'id': product_id
+            },
+            type: "POST",
+            success: function(result){
+
+              if ( result == 'no_suite' ) {
+                return true
+              }
+
+              if (result) {
+
+                Swal.fire(
+                  'Eliminado!',
+                  'El producto ha sido eliminado.',
+                  'success'
+                )
+
+                app.getProducts()
+
+                resetInputs()
+
+              } else {
+
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Algo salió mal!',
+                })
+                return false
+
+              }
+
+          }})
+
+        }
+
+      })
+
+    },
+
   },
   computed: {
     
