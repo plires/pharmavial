@@ -26,7 +26,7 @@ echo "
 
             <?php $active = $current == 'products' ? 'active' : ''; ?>
             <a href="productos.php" class="nav-link <?= $active; ?>">
-              <i class="nav-icon fas fa-dollar-sign"></i>
+              <i class="nav-icon fab fa-product-hunt"></i>
               <p>
                 PRODUCTOS
                 <i class="fas fa-angle-left right"></i>
@@ -36,13 +36,13 @@ echo "
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="add-product.php" class="nav-link">
-                  <i class="fas fa-lock nav-icon"></i>
+                  <i class="nav-icon fas fa-plus"></i>
                   <p>Agregar Producto</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="productos.php" class="nav-link">
-                  <i class="fas fa-user-edit nav-icon"></i>
+                  <i class="nav-icon far fa-edit"></i>
                   <p>Editar producto</p>
                 </a>
               </li>
@@ -53,10 +53,9 @@ echo "
           <li class="nav-item">
             <?php $active = $current == 'images' ? 'active' : ''; ?>
             <a href="imagenes.php" class="nav-link <?= $active; ?>">
-              <i class="nav-icon fas fa-database"></i>
+              <i class="nav-icon far fa-images"></i>
               <p>
                 IMAGENES
-                <i class="right fas fa-eye"></i>
               </p>
             </a>
           </li>
@@ -64,10 +63,9 @@ echo "
           <li class="nav-item">
             <?php $active = $current == 'prospects' ? 'active' : ''; ?>
             <a href="prospectos.php" class="nav-link <?= $active; ?>">
-              <i class="nav-icon fas fa-database"></i>
+              <i class="nav-icon fas fa-file-medical"></i>
               <p>
                 PROSPECTOS
-                <i class="right fas fa-eye"></i>
               </p>
             </a>
           </li>
@@ -90,7 +88,7 @@ echo "
               </li>
               <li class="nav-item">
                 <a href="change_pass.php" class="nav-link">
-                  <i class="fas fa-lock nav-icon"></i>
+                  <i class="nav-icon fas fa-key"></i>
                   <p>Cambiar Pass</p>
                 </a>
               </li>
