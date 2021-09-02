@@ -520,7 +520,7 @@
                   <input type="hidden" name="origin" value="<?= $origin ?>">
 
                   <div class="form-group">
-                    <select required class="custom-select">
+                    <select required class="custom-select" name="to">
                       <option disabled>Addressed to:</option>
                       <option selected value="rrhh@laboratorioibc.com.ar">RRHH</option>
                       <option value="compras@laboratorioibc.com.ar">Purchases</option>

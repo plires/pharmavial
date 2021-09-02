@@ -8,7 +8,7 @@ $body='
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Instituto Biológico Contemporaneo</title>
+  <title>Pharmavial</title>
 
   <style type="text/css">
   </style>    
@@ -22,15 +22,23 @@ $body='
       <tr>
       <tr>
           <td align="center" valign="top">
-            <img src="http://laboratorioibc.com.ar/img/emails/logo-ibc-mail.gif" style="margin:0; padding:0; border:none; display:block;" border="0" alt="logo" /> 
+            <img src="http://pharmavial.com.ar/img/header/header-logo-pharmavial.png" style="margin:0; padding:0; border:none; display:block;" border="0" alt="logo" /> 
           </td>
       </tr>
        <tr>
           <td height="40">&nbsp;</td>
       </tr>
       <tr>
-          <td align="center" valign="top" style="font-size:18px; line-height:30px;"><strong>Instituto Biológico Contemporaneo - '.$post['origin'].'</strong></td>
+          <td align="center" valign="top" style="font-size:18px; line-height:30px;"><strong>Pharmavial - '.$post['origin'].'</strong></td>
       </tr>
+      <tr>
+           <td height="10">&nbsp;</td>
+      </tr>
+
+      <tr>
+          <td align="center" valign="top" style="font-size:16px; line-height:30px;"><p><strong>Dirigido a: </strong>'.$post['to'].'</p></td>
+      </tr>
+
       <tr>
            <td height="10">&nbsp;</td>
       </tr>

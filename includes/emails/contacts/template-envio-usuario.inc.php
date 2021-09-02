@@ -9,7 +9,7 @@ $body = '
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Instituto Biológico Contemporaneo</title>
+  <title>Pharmavial</title>
 
   <style type="text/css">
   </style>    
@@ -23,7 +23,7 @@ $body = '
       <tr>
       <tr>
         <td align="center" valign="top">
-          <img src="http://laboratorioibc.com.ar/img/emails/logo-ibc-mail.gif" style="margin:0; padding:0; border:none; display:block;" border="0" alt="logo" /> 
+          <img src="http://pharmavial.com.ar/img/header/header-logo-pharmavial.png" style="margin:0; padding:0; border:none; display:block;" border="0" alt="logo" /> 
         </td>
       </tr>
        <tr>
@@ -37,7 +37,7 @@ $body = '
             </p>
 
             <p>
-                Si tenés más consultas podes escribirnos al: <a style="color: grey;" href="mailto:info@laboratorioibc.com.ar">info@laboratorioibc.com.ar</a>
+                Si tenés más consultas podes escribirnos al: <a style="color: grey;" href="mailto:info@pharmavial.com.ar">info@pharmavial.com.ar</a>
             </p>
 
           </td>

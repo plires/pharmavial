@@ -24,15 +24,14 @@ define('DB_PASS', 'secret');
 //////////////////////////////
 // define('EMAIL_PASS', 'envioinstituto2020'); // No se pasa este valor por GodaDdy
 define('SMTP', 'localhost'); // Valor especial por GoDaddy
-define('EMAIL_SENDER', 'info@laboratorioibc.com.ar');
-define('EMAIL_SENDER_SHOW', 'info@laboratorioibc.com.ar');
-define('NAME_SENDER_SHOW', 'Instituto Biológico Contemporaneo');
-// define('EMAIL_RECIPIENT', 'info@laboratorioibc.com.ar');
-define('EMAIL_RECIPIENT', 'carlos.castro.1975.2@gmail.com');
+define('EMAIL_SENDER', 'info@pharmavial.com.ar');
+define('EMAIL_SENDER_SHOW', 'info@pharmavial.com.ar');
+define('NAME_SENDER_SHOW', 'Pharmavial');
+define('EMAIL_RECIPIENT', 'info@pharmavial.com.ar');
 define('EMAIL_BCC', '');
 define('EMAIL_PORT', 25);
 
-define('EMAIL_NAME', 'Instituto Biológico Contemporaneo');
+define('EMAIL_NAME', 'Pharmavial');
 define('EMAIL_SUBJECT', 'Gracias por tu contacto');
 define('EMAIL_CHARSET', 'utf-8');
 define('EMAIL_ENCODING', 'quoted­printable');
