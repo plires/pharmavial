@@ -499,7 +499,7 @@
 
                 <form id="send" method="post" class="needs-validation" novalidate>
 
-                  <?php require_once("/../php/sendForm.php"); ?>
+                  <?php require_once("./../php/sendForm.php"); ?>
 
                   <!-- Errores Formulario -->
                   <?php if ($errors): ?>
