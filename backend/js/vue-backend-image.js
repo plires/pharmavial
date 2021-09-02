@@ -22,17 +22,22 @@ let app = new Vue({
   methods: {
     
     async getProducts() {
+      loader()
       let response = await axios.get('/backend/php/get_products.php')
       this.products = response.data
       this.productsByLang = this.products
+      $('#loader').fadeOut(500)
     },
 
     async getImages() {
+      loader()
       let response = await axios.get('/backend/php/get_images.php')
       this.images = response.data
+      $('#loader').fadeOut(500)
     },
 
     changeLanguage(lang) {
+      loader()
       this.productsByLang = []
       this.productsByLang = this.products.filter( (product) => product.language == lang )
       this.selected = 0
@@ -40,6 +45,7 @@ let app = new Vue({
       if (this.imagesByProduct) {
         this.imagesByProduct = []
       }
+      $('#loader').fadeOut(500)
     },
 
     checkFormImage: function () { 
@@ -77,10 +83,12 @@ let app = new Vue({
         const form = document.querySelector('#form_image')
         var formData = new FormData(form);
 
-        var imagefile = document.querySelector('#customFileLang');
+        var imagefile = document.querySelector('#customFileLang')
 
         formData.append("image", imagefile.files[0])
         formData.append("product_id", this.selected)
+
+        loader()
 
         axios.post('/backend/php/upload_image.php', formData, {
           headers: {
@@ -98,6 +106,8 @@ let app = new Vue({
             )
 
             app.getImages()
+
+            document.querySelector('#customFileLang').value = ""
             
             setTimeout(function(){ 
 
@@ -124,6 +134,8 @@ let app = new Vue({
 
       }
 
+      $('#loader').fadeOut(500)
+
     },
 
     deleteImage(image_id, index) {
@@ -139,6 +151,8 @@ let app = new Vue({
       }).then((result) => {
         if (result.isConfirmed) {
           
+          loader()
+
           $.ajax({
             url: '/backend/php/delete_image.php',
             data: {
@@ -174,6 +188,8 @@ let app = new Vue({
               }
 
           }})
+
+          $('#loader').fadeOut(500)
 
         }
 

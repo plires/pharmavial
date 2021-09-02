@@ -46,6 +46,10 @@
 	position: relative;
 }
 
+.custom-file-label::after {
+	content: 'Buscar';
+}
+
 #deleteImage {
 	position: absolute;
 	width: 35px;

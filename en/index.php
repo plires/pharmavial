@@ -278,7 +278,10 @@
               <div class="content_producto">
 
                 <div v-if="filteredImages(product.id).length == 0">
-                  <img src="/../img/productos/no-image.gif" class="img-fluid" alt="sin imagen producto">
+                  <img 
+                    src="./../img/productos/no-image.gif" 
+                    class="img-fluid" 
+                    :alt="'not product image - ' + index">
                 </div>
 
                 <div v-else-if="filteredImages(product.id).length > 1" :id="'carousel_' + product.id" class="carousel slide" data-ride="carousel">
@@ -289,7 +292,9 @@
                       v-for="(image, index_image) in filteredImages(product.id)" 
                       :key="image.id"
                       v-bind:class="[index_image == 0 ? 'active' : '', 'carousel-item']">
-                      <img :src="'img/productos/' + image.url" class="d-block w-100" :alt="'Laboratorio IBC ' + image.alt">
+                      <img 
+                        :src="'./../img/productos/' + image.url" class="d-block w-100" 
+                        :alt="'Laboratorio IBC ' + image.alt + ' - ' + image.id">
                     </div>
 
                   </div>
@@ -305,7 +310,10 @@
                 </div>
 
                 <div v-else>
-                  <img :src="'img/productos/' + filteredImages(product.id).url" class="img-fluid" alt="sin imagen producto">
+                  <img 
+                    :src="'./../img/productos/' + filteredImages(product.id).url" 
+                    class="img-fluid" 
+                    :alt="'producto - ' + ' - ' + product.id">
                 </div>
 
                 <div class="datos_producto">
@@ -314,7 +322,12 @@
                   <p class="presentacion"><span>Presentación: </span> {{ product.presentation }}</p>
                   <p class="unidades_caja"><span>Unit per box: </span> {{ product.units_per_box }}</p>
                   <p class="linea_terapeutica"><span>Therapeutic line: </span> {{ product.therapeutic_line }}</p>
-                  <a v-if="product.link" class="transition" :href="'prospectos/' + product.link" target="_blank" rel="noopener noreferrer">Download</a>
+                  <a 
+                    v-if="product.link" 
+                    class="transition" 
+                    :href="'prospectos/' + product.link" 
+                    target="_blank" 
+                    rel="noopener noreferrer">Download</a>
                 </div>  
                 
               </div>
