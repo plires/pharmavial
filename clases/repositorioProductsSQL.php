@@ -123,7 +123,6 @@ class RepositorioProductsSQL extends repositorioProducts
         return $save_in_bdd;
       }
 
-      
     } catch (Exception $e) {
       
       // lanzar error
@@ -185,13 +184,39 @@ class RepositorioProductsSQL extends repositorioProducts
     return $image_to_delete_from_server['url'];
   }
 
+  public function getNameProspect($id) {
+    $sql = "SELECT * FROM products WHERE id = '$id'";
+    $stmt = $this->conexion->prepare($sql);
+    $stmt->execute();
+    $pdf_to_delete_from_server = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $pdf_to_delete_from_server['link'];
+  }
+
   public function delCurrentProspect($id)
   {
 
-    $sql = "UPDATE products SET link = :link WHERE id = '$id' ";
-    $stmt = $this->conexion->prepare($sql);
-    $stmt->bindValue(":link", '', PDO::PARAM_STR);
-    return $stmt->execute();
+    try {
+
+      $name_pdf = $this->getNameProspect($id);
+
+      $sql = "UPDATE products SET link = :link WHERE id = '$id' ";
+      $stmt = $this->conexion->prepare($sql);
+      $stmt->bindValue(":link", '', PDO::PARAM_STR);
+      $stmt->execute();
+      $pdf_deleted_from_bdd = $stmt->rowCount();
+
+      //Borrar fisicamente el PDF del servidor
+      if ( $pdf_deleted_from_bdd ) {
+        $del_pdf = unlink( $_SERVER['DOCUMENT_ROOT'] . 'prospectos/' . $name_pdf );
+        return $del_pdf;
+      }
+      
+    } catch (Exception $e) {
+
+      // lanzar error
+      header("HTTP/1.1 500 Internal Server Error");
+      
+    }
 
   }
 

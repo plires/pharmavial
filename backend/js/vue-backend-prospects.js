@@ -20,15 +20,19 @@ let app = new Vue({
   methods: {
     
     async getProducts() {
-      let response = await axios.get('/php/get_products.php')
+      loader()
+      let response = await axios.get('/backend/php/get_products.php')
       this.products = response.data
       this.productsByLang = this.products
+      $('#loader').fadeOut(500);
     },
 
     changeLanguage(lang) {
+      loader()
       this.productsByLang = []
       this.productsByLang = this.products.filter( (product) => product.language == lang )
       this.selected = 0
+      $('#loader').fadeOut(500);
     },
 
     checkFormProspect: function () { 
@@ -69,7 +73,8 @@ let app = new Vue({
         formData.append("product_id", this.selected)
         formData.append("old_file_name_prospect", this.prospect)
 
-        axios.post('/php/save_prospect.php', formData, {
+        loader()
+        axios.post('/backend/php/save_prospect.php', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -103,6 +108,8 @@ let app = new Vue({
           
         })
 
+        $('#loader').fadeOut(500);
+
       }
 
     },
@@ -125,7 +132,8 @@ let app = new Vue({
 
           formData.append("id", product_id)
 
-          axios.post('/php/delete_current_prospect.php', formData)
+          loader()
+          axios.post('/backend/php/delete_current_prospect.php', formData)
           .then(response => {
 
             if (response.data) {
@@ -155,6 +163,8 @@ let app = new Vue({
             })
             
           })
+
+          $('#loader').fadeOut(500);
 
         }
 

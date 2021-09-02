@@ -325,7 +325,7 @@
                   <a 
                     v-if="product.link" 
                     class="transition" 
-                    :href="'prospectos/' + product.link" 
+                    :href="'./../prospectos/' + product.link" 
                     target="_blank" 
                     rel="noopener noreferrer">Download</a>
                 </div>  
