@@ -29,17 +29,22 @@ let app = new Vue({
   methods: {
     
     async getProducts() {
+      loader()
       let response = await axios.get('/backend/php/get_products.php')
       this.products = response.data
       this.productsByLang = this.products
+      $('#loader').fadeOut(500)
     },
 
     async getImages() {
+      loader()
       let response = await axios.get('/backend/php/get_images.php')
       this.images = response.data
+      $('#loader').fadeOut(500)
     },
 
     changeLanguage(lang) {
+      loader()
       this.productsByLang = []
       this.productsByLang = this.products.filter( (product) => product.language == lang )
       this.selected = 0
@@ -47,6 +52,7 @@ let app = new Vue({
       if (this.imagesByProduct) {
         this.imagesByProduct = []
       }
+      $('#loader').fadeOut(500)
     },
 
     checkFormImage: function () { 
@@ -89,6 +95,7 @@ let app = new Vue({
         formData.append("image", imagefile.files[0])
         formData.append("product_id", this.selected)
 
+        loader()
         axios.post('/backend/php/upload_image.php', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
@@ -128,6 +135,8 @@ let app = new Vue({
           })
           
         })
+
+        $('#loader').fadeOut(500)
 
       }
 
@@ -274,8 +283,6 @@ let app = new Vue({
 
       if (checked) { 
 
-        loader()
-        
         const form = document.querySelector('#form_product')
         var formData = new FormData(form);
 
@@ -288,6 +295,7 @@ let app = new Vue({
         formData.append("therapeutic_line", this.therapeuticLine)
         formData.append("language", this.language)
 
+        loader()
         axios.post('/backend/php/save_product.php', formData)
         .then(response => {
 

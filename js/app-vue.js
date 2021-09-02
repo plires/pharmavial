@@ -35,11 +35,9 @@ let app = new Vue({
     async getProducts() {
       this.loading()
       let response = await axios.get('/php/getProducts.php')
-
-      this.fillSelects(response.data)
-
       this.products = response.data.filter( (product) => product.language == lang )
       this.filteredProducts = this.products
+      this.fillSelects(this.filteredProducts)
       this.loading()
     },
 
