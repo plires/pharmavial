@@ -6,6 +6,12 @@
 define('URI', $_SERVER['REQUEST_URI']);
 define ('BASE', (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/' );
 
+if (str_ends_with($_SERVER['DOCUMENT_ROOT'], '/')) {
+	define( 'PATH', $_SERVER['DOCUMENT_ROOT'] );
+} else {
+	define( 'PATH', $_SERVER['DOCUMENT_ROOT'] . '/' );
+}
+
 ////////////////////////
 ///Valores de DB Remota
 ////////////////////////

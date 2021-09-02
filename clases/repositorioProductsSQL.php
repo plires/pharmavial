@@ -43,7 +43,7 @@ class RepositorioProductsSQL extends repositorioProducts
 
     $filename = $name.'.'.$ext;
 
-    $destination = $_SERVER['DOCUMENT_ROOT'] . 'img/productos/'.$filename;
+    $destination = PATH . 'img/productos/'.$filename;
 
     $location =  $_FILES['image']['tmp_name'];
 
@@ -87,7 +87,7 @@ class RepositorioProductsSQL extends repositorioProducts
 
     $filename = $name.'.'.$ext;
 
-    $destination = $_SERVER['DOCUMENT_ROOT'] . 'prospectos/'.$filename;
+    $destination = PATH . 'prospectos/'.$filename;
 
     $location =  $file['uploadProspect']['tmp_name'];
 
@@ -133,7 +133,7 @@ class RepositorioProductsSQL extends repositorioProducts
   }
 
   public function deleteOldProspectFile($prospect) {
-    unlink( $_SERVER['DOCUMENT_ROOT'] . 'prospectos/' . $prospect );
+    unlink( PATH . 'prospectos/' . $prospect );
   }
 
   public function saveNewProspectInBdd($product_id, $new_filename) {
@@ -157,7 +157,7 @@ class RepositorioProductsSQL extends repositorioProducts
 
     //Borrar fisicamente la imagen del servidor
     if ( $image_deleted_from_bdd ) {
-      unlink( $_SERVER['DOCUMENT_ROOT'] . 'img/productos/' . $name_image );
+      unlink( PATH . 'img/productos/' . $name_image );
     }
 
     return $image_deleted_from_bdd;
@@ -207,7 +207,7 @@ class RepositorioProductsSQL extends repositorioProducts
 
       //Borrar fisicamente el PDF del servidor
       if ( $pdf_deleted_from_bdd ) {
-        $del_pdf = unlink( $_SERVER['DOCUMENT_ROOT'] . 'prospectos/' . $name_pdf );
+        $del_pdf = unlink( PATH . 'prospectos/' . $name_pdf );
         return $del_pdf;
       }
       
@@ -326,7 +326,7 @@ class RepositorioProductsSQL extends repositorioProducts
     $image = $manager->make($location)
       ->resize(600, 400)
       ->encode('jpg', 60)
-      ->save($_SERVER['DOCUMENT_ROOT'] . 'img/productos/'.$filename, 90);
+      ->save(PATH . 'img/productos/'.$filename, 90);
 
   }
 
