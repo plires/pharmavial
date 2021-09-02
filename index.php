@@ -22,8 +22,6 @@
   </script>
   ";
 
-  require_once("php/sendForm.php");
-
 ?>
 
 <!doctype html>
@@ -500,6 +498,8 @@
                 <h2>Contacto</h2>
 
                 <form id="send" method="post" class="needs-validation" novalidate>
+
+                  <?php require_once("php/sendForm.php"); ?>
 
                   <!-- Errores Formulario -->
                   <?php if ($errors): ?>
