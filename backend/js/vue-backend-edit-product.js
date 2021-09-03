@@ -125,6 +125,8 @@ let app = new Vue({
             app.errors.push('La imágen es requerida. Sólo se permiten archivos JPG y menores a 2 mb.')
           }
 
+          $('#loader').fadeOut(500)
+
         })
         .catch(errors => {
 
@@ -133,10 +135,10 @@ let app = new Vue({
             title: 'Oops...',
             text: 'Ocurrió un error en el servidor... intente mas tarde por favor!',
           })
+
+          $('#loader').fadeOut(500)
           
         })
-
-        $('#loader').fadeOut(500)
 
       }
 
@@ -315,6 +317,8 @@ let app = new Vue({
             app.errors.push('Todos los campos son obligatorios.')
           }
 
+          $('#loader').fadeOut(500);
+
         })
         .catch(errors => {
 
@@ -323,10 +327,10 @@ let app = new Vue({
             title: 'Oops...',
             text: 'Ocurrió un error en el servidor... intente mas tarde por favor!',
           })
+
+          $('#loader').fadeOut(500);
           
         })
-
-        $('#loader').fadeOut(500);
 
       }
 

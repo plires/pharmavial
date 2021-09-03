@@ -82,9 +82,9 @@ let app = new Vue({
               app.errors.push('Todos los campos son obligatorios. Seleccione un idioma para el producto')
             }
 
-        }});
+            $('#loader').fadeOut(500);
 
-        $('#loader').fadeOut(500);
+        }});
 
       }
 
@@ -130,6 +130,7 @@ let app = new Vue({
         formData.append("image", imagefile.files[0])
         formData.append("product_id", this.selected)
 
+        loader()
         axios.post('/backend/php/upload_image.php', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
@@ -157,7 +158,10 @@ let app = new Vue({
           } else {
             app.errors = []
             app.errors.push('La imágen es requerida. Sólo se permiten archivos JPG y menores a 2 mb.')
+
           }
+
+          $('#loader').fadeOut(500);
 
         })
         .catch(errors => {
@@ -167,6 +171,8 @@ let app = new Vue({
             title: 'Oops...',
             text: 'Ocurrió un error en el servidor... intente mas tarde por favor!',
           })
+
+          $('#loader').fadeOut(500);
           
         })
 
@@ -186,7 +192,8 @@ let app = new Vue({
         confirmButtonText: 'Si, eliminar!'
       }).then((result) => {
         if (result.isConfirmed) {
-          
+
+          loader()          
           $.ajax({
             url: '/backend/php/delete_image.php',
             data: {
@@ -220,6 +227,8 @@ let app = new Vue({
                 return false
 
               }
+
+              $('#loader').fadeOut(500);
 
           }})
 

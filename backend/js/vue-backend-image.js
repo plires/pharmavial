@@ -121,6 +121,8 @@ let app = new Vue({
             app.errors.push('La imágen es requerida. Sólo se permiten archivos JPG y menores a 2 mb.')
           }
 
+          $('#loader').fadeOut(500)
+
         })
         .catch(errors => {
 
@@ -129,12 +131,12 @@ let app = new Vue({
             title: 'Oops...',
             text: 'Ocurrió un error en el servidor... intente mas tarde por favor!',
           })
+
+          $('#loader').fadeOut(500)
           
         })
 
       }
-
-      $('#loader').fadeOut(500)
 
     },
 
@@ -163,6 +165,7 @@ let app = new Vue({
 
               if ( result == 'no_suite' ) {
                 return true
+                $('#loader').fadeOut(500)
               }
 
               if (result) {
@@ -176,6 +179,8 @@ let app = new Vue({
                 app.imagesByProduct = app.imagesByProduct.filter( (product) => product.id != image_id )
                 app.getImages()
 
+                $('#loader').fadeOut(500)
+
               } else {
 
                 Swal.fire({
@@ -183,13 +188,14 @@ let app = new Vue({
                   title: 'Oops...',
                   text: 'Algo salió mal!',
                 })
+
+                $('#loader').fadeOut(500)
+
                 return false
 
               }
 
           }})
-
-          $('#loader').fadeOut(500)
 
         }
 

@@ -97,6 +97,8 @@ let app = new Vue({
             app.errors.push('El archivo es requerido. Sólo se permiten archivos PDF y menores a 20 mb.')
           }
 
+          $('#loader').fadeOut(500);
+
         })
         .catch(errors => {
 
@@ -105,10 +107,10 @@ let app = new Vue({
             title: 'Oops...',
             text: 'Ocurrió un error en el servidor... intente mas tarde por favor!',
           })
+
+          $('#loader').fadeOut(500);
           
         })
-
-        $('#loader').fadeOut(500);
 
       }
 
@@ -153,6 +155,8 @@ let app = new Vue({
               app.errors.push('Hubo un error, intente nuevamente por favor.')
             }
 
+            $('#loader').fadeOut(500);
+
           })
           .catch(errors => {
 
@@ -161,10 +165,10 @@ let app = new Vue({
               title: 'Oops...',
               text: 'Ocurrió un error en el servidor... intente mas tarde por favor!',
             })
+
+            $('#loader').fadeOut(500);
             
           })
-
-          $('#loader').fadeOut(500);
 
         }
 
