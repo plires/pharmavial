@@ -10,9 +10,12 @@ use PHPMailer\PHPMailer\Exception;
 
     public function sendEmail($destinatario, $template, $post)
     {
+
+      $to = $post['to'];
+
       switch ($destinatario) {
         case 'Cliente':
-          $emailDestino = EMAIL_RECIPIENT;
+          $emailDestino = $to;
           if (isset($post['name'])) {
             $nameShow = $post['name'];
             $emailAddReplyTo = $post['email'];
@@ -22,24 +25,17 @@ use PHPMailer\PHPMailer\Exception;
             $emailAddReplyTo = $post['email'];
             $emailBCC = EMAIL_BCC;
           }
-          $emailShow = EMAIL_SENDER;  // Mi cuenta de correo
+          $emailShow = EMAIL_SENDER;  
           break;
         
         case 'Usuario':
           $emailDestino = $post['email'];
           $nameShow = NAME_SENDER_SHOW;
-          $emailShow = EMAIL_RECIPIENT;  // Mi cuenta de correo
-          $emailAddReplyTo = EMAIL_SENDER_SHOW;
+          $emailShow = $to;  
+          $emailAddReplyTo = $to;
           $emailBCC = '';
           break;
 
-        case 'Cliente CV':
-          $emailDestino = EMAIL_RECIPIENT;
-          $nameShow = 'Sitio Web Laboratorio IBC';
-          $emailAddReplyTo = EMAIL_SENDER;
-          $emailBCC = EMAIL_BCC;
-          $emailShow = EMAIL_SENDER;  
-          break;
       }
 
       if ($_SESSION['lang'] === 'es') {
@@ -59,12 +55,6 @@ use PHPMailer\PHPMailer\Exception;
           $subject = 'Gracias por su contacto.';
           break;
 
-        case 'Send CV Cliente':
-          $this->uploadCV($post);
-
-          include($path."includes/emails/cv/template-envio-cliente.inc.php"); // Cargo el contenido del email a enviar al cliente.
-          $subject = 'Envio de CV desde Formulario web.';
-          break;
       }
 
       // Instantiation and passing `true` enables exceptions
@@ -100,7 +90,6 @@ use PHPMailer\PHPMailer\Exception;
       );
 
       // $mail->SMTPDebug  = 2;
-
 
       $send = $mail->Send(); 
       

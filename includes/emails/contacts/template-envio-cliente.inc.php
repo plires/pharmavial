@@ -60,6 +60,22 @@ $body='
       </tr>
 
       <tr>
+          <td align="center" valign="top" style="font-size:16px; line-height:30px;"><p><strong>Teléfono: </strong>'.$post['phone'].'</p></td>
+      </tr>
+
+      <tr>
+           <td height="10">&nbsp;</td>
+      </tr>
+
+      <tr>
+          <td align="center" valign="top" style="font-size:16px; line-height:30px;"><p><strong>Empresa: </strong>'.$post['company'].'</p></td>
+      </tr>
+
+      <tr>
+           <td height="10">&nbsp;</td>
+      </tr>
+
+      <tr>
           <td align="center" valign="top" style="font-size:16px; line-height:30px;"><p><strong>Comentarios: </strong>'.$post['comments'].'</p></td>
       </tr>
 
