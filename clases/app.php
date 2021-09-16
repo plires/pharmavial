@@ -31,8 +31,8 @@ use PHPMailer\PHPMailer\Exception;
         case 'Usuario':
           $emailDestino = $post['email'];
           $nameShow = NAME_SENDER_SHOW;
-          $emailShow = $to;  
-          $emailAddReplyTo = $to;
+          $emailShow = 'no-reply@pharmavial.com.ar';  
+          $emailAddReplyTo = 'no-reply@pharmavial.com.ar';
           $emailBCC = '';
           break;
 

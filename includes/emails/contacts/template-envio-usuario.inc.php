@@ -31,13 +31,9 @@ $body = '
        </tr>
       <tr>
           <td align="center" valign="top">
-            <strong>Hola '.$post['name'].', gracias por tu contacto!</strong> <br>
+            <strong>Hola '.$post['name'].', gracias por su contacto!</strong> <br>
             <p>
-                Nos comunicaremos con vos lo antes posible.
-            </p>
-
-            <p>
-                Si tenés más consultas podes escribirnos al: <a style="color: grey;" href="mailto:info@pharmavial.com.ar">info@pharmavial.com.ar</a>
+                Nos comunicaremos con usted lo antes posible.
             </p>
 
           </td>

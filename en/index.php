@@ -530,18 +530,18 @@
                   </div>
 
                   <div class="form-group">
-                    <input required type="text" class="form-control transition" name="name" value="<?= $name ?>" placeholder="Nombre y Apellido">
+                    <input required type="text" class="form-control transition" name="name" value="<?= $name ?>" placeholder="Name and surname">
                     <div class="invalid-feedback">
                       Enter your name.
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <input type="text" class="form-control transition" name="company" value="<?= $company ?>" placeholder="Empresa">
+                    <input type="text" class="form-control transition" name="company" value="<?= $company ?>" placeholder="Company">
                   </div>
 
                   <div class="form-group">
-                    <input required type="text" class="form-control transition" name="phone" value="<?= $phone ?>" placeholder="Teléfono">
+                    <input required type="text" class="form-control transition" name="phone" value="<?= $phone ?>" placeholder="Telephone">
                     <div class="invalid-feedback">
                       Enter a phone.
                     </div>
@@ -555,9 +555,9 @@
                   </div>
 
                   <div class="form-group">
-                    <textarea required class="form-control transition" name="comments" rows="3" placeholder="Consulta"><?= $comments ?></textarea>
+                    <textarea required class="form-control transition" name="comments" rows="3" placeholder="Comments"><?= $comments ?></textarea>
                     <div class="invalid-feedback">
-                      Enter your query.
+                      Enter your comments.
                     </div>
                   </div>
 
