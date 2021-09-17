@@ -37,7 +37,8 @@ class RepositorioProductsSQL extends repositorioProducts
     $alt = $post['alt'];
     $product_id = (int)$post['product_id'];
 
-    $name = md5(rand(100, 200));
+    // $name = md5(rand(100, 200));
+    $name = uniqid();
 
     $ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
 
@@ -81,7 +82,8 @@ class RepositorioProductsSQL extends repositorioProducts
   public function moveFileInDirectory($file, $post) {
     $product_id = (int)$post['product_id'];
 
-    $name = md5(rand(100, 200));
+    // $name = md5(rand(100, 200));
+    $name = uniqid();
 
     $ext = pathinfo($file['uploadProspect']['name'], PATHINFO_EXTENSION);
 
@@ -148,7 +150,7 @@ class RepositorioProductsSQL extends repositorioProducts
   public function deleteImage($id)
   {
 
-    $name_image = $this->getNameImage($id);
+    // $name_image = $this->getNameImage($id);
 
     $sql = "DELETE FROM images WHERE id='$id'";
     $stmt = $this->conexion->prepare($sql);
@@ -156,9 +158,9 @@ class RepositorioProductsSQL extends repositorioProducts
     $image_deleted_from_bdd = $stmt->rowCount();
 
     //Borrar fisicamente la imagen del servidor
-    if ( $image_deleted_from_bdd ) {
-      unlink( PATH . 'img/productos/' . $name_image );
-    }
+    // if ( $image_deleted_from_bdd ) {
+    //   unlink( PATH . 'img/productos/' . $name_image );
+    // }
 
     return $image_deleted_from_bdd;
 
@@ -197,7 +199,7 @@ class RepositorioProductsSQL extends repositorioProducts
 
     try {
 
-      $name_pdf = $this->getNameProspect($id);
+      // $name_pdf = $this->getNameProspect($id);
 
       $sql = "UPDATE products SET link = :link WHERE id = '$id' ";
       $stmt = $this->conexion->prepare($sql);
@@ -206,10 +208,12 @@ class RepositorioProductsSQL extends repositorioProducts
       $pdf_deleted_from_bdd = $stmt->rowCount();
 
       //Borrar fisicamente el PDF del servidor
-      if ( $pdf_deleted_from_bdd ) {
-        $del_pdf = unlink( PATH . 'prospectos/' . $name_pdf );
-        return $del_pdf;
-      }
+      // if ( $pdf_deleted_from_bdd ) {
+      //   $del_pdf = unlink( PATH . 'prospectos/' . $name_pdf );
+      //   return $del_pdf;
+      // }
+
+      return $pdf_deleted_from_bdd;
       
     } catch (Exception $e) {
 

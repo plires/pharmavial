@@ -108,6 +108,7 @@ let app = new Vue({
             app.getImages()
 
             document.querySelector('#customFileLang').value = ""
+            document.querySelector('#customFileLang').value = ""
             
             setTimeout(function(){ 
 

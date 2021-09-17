@@ -153,7 +153,7 @@ $productos = $db->getRepositorioProducts()->getProducts();
                           <a 
                             :href="'/../img/productos/' + image.url"
                             data-toggle="lightbox" 
-                            :data-title="image.alt" 
+                            data-title="Imagen del producto" 
                             data-gallery="gallery"
                           >
                             <img 
